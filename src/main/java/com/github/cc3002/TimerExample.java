@@ -12,7 +12,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 /**
  * @author Ignacio Slater Muñoz.
  */
-public class TimerExample {
+public abstract class TimerExample {
 
   public static void main(String[] args) throws InterruptedException {
     BlockingQueue<ICharacter> queue = new LinkedBlockingQueue<>();
