@@ -32,7 +32,7 @@ public class Weapon {
     return name;
   }
 
-  private int getDamage() {
+  public int getDamage() {
     return damage;
   }
 
