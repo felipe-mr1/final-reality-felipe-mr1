@@ -21,7 +21,7 @@ public class WhiteMage extends PlayerCharacter {
         assert this.mana > 40;
         this.mana -= 40;
     }
-    public void paralize(){
+    public void paralyze(){
         assert this.mana > 30;
         this.mana -= 30;
     }

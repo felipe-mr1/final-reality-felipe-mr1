@@ -29,9 +29,6 @@ public class PlayerCharacter extends AbstractCharacter {
       final CharacterClass characterClass) {
     super(turnsQueue, name, characterClass);
   }
-  public void attack(){
-
-  }
 
   @Override
   public int hashCode() {
