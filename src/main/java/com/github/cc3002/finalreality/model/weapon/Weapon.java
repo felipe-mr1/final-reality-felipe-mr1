@@ -30,7 +30,7 @@ public class Weapon {
     this.magicDamage = magicDamage;
   }
 
-  private String getName() {
+  public String getName() {
     return name;
   }
 
@@ -44,7 +44,7 @@ public class Weapon {
     return weight;
   }
 
-  private WeaponType getType() {
+  public WeaponType getType() {
     return type;
   }
 
