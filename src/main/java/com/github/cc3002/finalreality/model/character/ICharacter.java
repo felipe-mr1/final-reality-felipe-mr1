@@ -26,7 +26,7 @@ public interface ICharacter {
   /**
    * Equips a weapon to the character.
    */
-  void equip(Weapon weapon);
+  void equip(Weapon weapon) throws Exception;
 
   /**
    * Return this character's equipped weapon.
@@ -37,4 +37,6 @@ public interface ICharacter {
    * Returns this character's class.
    */
   CharacterClass getCharacterClass();
+
+
 }

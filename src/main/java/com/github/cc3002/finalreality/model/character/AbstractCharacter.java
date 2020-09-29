@@ -57,7 +57,7 @@ public abstract class AbstractCharacter implements ICharacter {
   }
 
   @Override
-  public void equip(Weapon weapon) {
+  public void equip(Weapon weapon) throws Exception{
     if (this instanceof PlayerCharacter) {
       this.equippedWeapon = weapon;
     }

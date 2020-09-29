@@ -14,6 +14,7 @@ public class Weapon {
   private final int damage;
   private final int weight;
   private final WeaponType type;
+  private int magicDamage = 0;
 
   /**
    * Creates a weapon with a name, a base damage, speed and it's type.
@@ -21,26 +22,29 @@ public class Weapon {
    * @see WeaponType
    */
   public Weapon(final String name, final int damage, final int weight,
-      final WeaponType type) {
+      final WeaponType type, final int magicDamage) {
     this.name = name;
     this.damage = damage;
     this.weight = weight;
     this.type = type;
+    this.magicDamage = magicDamage;
   }
 
-  private String getName() {
+  public String getName() {
     return name;
   }
 
-  private int getDamage() {
+  public int getDamage() {
     return damage;
   }
+
+  public int getMagicDamage() {return magicDamage;}
 
   public int getWeight() {
     return weight;
   }
 
-  private WeaponType getType() {
+  public WeaponType getType() {
     return type;
   }
 
