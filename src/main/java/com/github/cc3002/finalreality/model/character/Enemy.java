@@ -3,6 +3,8 @@ package com.github.cc3002.finalreality.model.character;
 import com.github.cc3002.finalreality.model.character.player.CharacterClass;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
+
+import com.github.cc3002.finalreality.model.weapon.Weapon;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -30,6 +32,10 @@ public class Enemy extends AbstractCharacter {
    */
   public int getWeight() {
     return weight;
+  }
+
+  public void equip(Weapon weapon) throws Exception{
+    throw new Exception("Enemies cant equip weapons");
   }
 
   @Override
