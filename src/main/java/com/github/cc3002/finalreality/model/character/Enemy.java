@@ -3,7 +3,6 @@ package com.github.cc3002.finalreality.model.character;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 
-import com.github.cc3002.finalreality.model.weapon.Weapon;
 import org.jetbrains.annotations.NotNull;
 
 /**
