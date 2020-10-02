@@ -1,24 +1,23 @@
 package com.github.cc3002.finalreality.model.character.player;
 
-import com.github.cc3002.finalreality.model.character.AbstractCharacter;
 import com.github.cc3002.finalreality.model.character.ICharacter;
+import com.github.cc3002.finalreality.model.weapon.IWeapon;
 import com.github.cc3002.finalreality.model.weapon.Knife;
 import com.github.cc3002.finalreality.model.weapon.Staff;
-import com.github.cc3002.finalreality.model.weapon.Weapon;
 
 import java.util.concurrent.BlockingQueue;
 
 public class BlackMage extends PlayerCharacter {
 
     int mana;
-    public BlackMage(final String name,
+    public BlackMage(final java.lang.String name,
                      final BlockingQueue<ICharacter> turnsQueue,
-                     final CharacterClass characterclass){
-        super(name, turnsQueue, characterclass);
+                     final String characterClass){
+        super(name, turnsQueue, characterClass);
         this.mana = 200;
     }
 
-    public void equip( Weapon weapon) throws Exception {
+    public void equip(IWeapon weapon) throws Exception {
         if (!(weapon instanceof Staff | weapon instanceof Knife)){
             throw new Exception("Can't equip that type of weapon");
         }

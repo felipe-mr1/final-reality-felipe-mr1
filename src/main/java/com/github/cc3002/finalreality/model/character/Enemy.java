@@ -1,6 +1,5 @@
 package com.github.cc3002.finalreality.model.character;
 
-import com.github.cc3002.finalreality.model.character.player.CharacterClass;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 
@@ -21,9 +20,9 @@ public class Enemy extends AbstractCharacter {
    * Creates a new enemy with a name, a weight and the queue with the characters ready to
    * play.
    */
-  public Enemy(@NotNull final String name, final int weight,
-      @NotNull final BlockingQueue<ICharacter> turnsQueue) {
-    super(turnsQueue, name, CharacterClass.ENEMY);
+  public Enemy(@NotNull final java.lang.String name, final int weight,
+               @NotNull final BlockingQueue<ICharacter> turnsQueue) {
+    super(turnsQueue, name, String.ENEMY);
     this.weight = weight;
   }
 
