@@ -3,6 +3,7 @@ package com.github.cc3002.finalreality.model.character;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 
+import com.github.cc3002.finalreality.model.weapon.IWeapon;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -21,7 +22,7 @@ public class Enemy extends AbstractCharacter {
    */
   public Enemy(@NotNull final java.lang.String name, final int weight,
                @NotNull final BlockingQueue<ICharacter> turnsQueue) {
-    super(turnsQueue, name, String.ENEMY);
+    super(turnsQueue, name, "Enemy");
     this.weight = weight;
   }
 
@@ -32,7 +33,7 @@ public class Enemy extends AbstractCharacter {
     return weight;
   }
 
-  public void equip(Weapon weapon) throws Exception{
+  public void equip(IWeapon weapon) throws Exception{
     throw new Exception("Enemies cant equip weapons");
   }
 
