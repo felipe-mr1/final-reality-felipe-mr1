@@ -1,10 +1,9 @@
 package com.github.cc3002.finalreality.model.character;
 
-import com.github.cc3002.finalreality.model.character.player.CharacterClass;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 
-import com.github.cc3002.finalreality.model.weapon.Weapon;
+import com.github.cc3002.finalreality.model.weapon.IWeapon;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -21,9 +20,9 @@ public class Enemy extends AbstractCharacter {
    * Creates a new enemy with a name, a weight and the queue with the characters ready to
    * play.
    */
-  public Enemy(@NotNull final String name, final int weight,
-      @NotNull final BlockingQueue<ICharacter> turnsQueue) {
-    super(turnsQueue, name, CharacterClass.ENEMY);
+  public Enemy(@NotNull final java.lang.String name, final int weight,
+               @NotNull final BlockingQueue<ICharacter> turnsQueue) {
+    super(turnsQueue, name, "Enemy");
     this.weight = weight;
   }
 
@@ -34,7 +33,7 @@ public class Enemy extends AbstractCharacter {
     return weight;
   }
 
-  public void equip(Weapon weapon) throws Exception{
+  public void equip(IWeapon weapon) throws Exception{
     throw new Exception("Enemies cant equip weapons");
   }
 

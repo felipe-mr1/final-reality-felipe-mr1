@@ -1,8 +1,8 @@
 package com.github.cc3002.finalreality.model.character;
 
-import com.github.cc3002.finalreality.model.character.player.CharacterClass;
 import com.github.cc3002.finalreality.model.character.player.PlayerCharacter;
-import com.github.cc3002.finalreality.model.weapon.Weapon;
+import com.github.cc3002.finalreality.model.weapon.IWeapon;
+
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -18,13 +18,13 @@ import org.jetbrains.annotations.NotNull;
 public abstract class AbstractCharacter implements ICharacter {
 
   protected final BlockingQueue<ICharacter> turnsQueue;
-  protected final String name;
-  private final CharacterClass characterClass;
-  private Weapon equippedWeapon = null;
+  protected final java.lang.String name;
+  private final String characterClass;
+  private IWeapon equippedWeapon = null;
   private ScheduledExecutorService scheduledExecutor;
 
   protected AbstractCharacter(@NotNull BlockingQueue<ICharacter> turnsQueue,
-      @NotNull String name, CharacterClass characterClass) {
+                              @NotNull java.lang.String name, String characterClass) {
     this.turnsQueue = turnsQueue;
     this.name = name;
     this.characterClass = characterClass;
@@ -52,24 +52,24 @@ public abstract class AbstractCharacter implements ICharacter {
   }
 
   @Override
-  public String getName() {
+  public java.lang.String getName() {
     return name;
   }
 
   @Override
-  public void equip(Weapon weapon) throws Exception{
+  public void equip(IWeapon weapon) throws Exception{
     if (this instanceof PlayerCharacter) {
       this.equippedWeapon = weapon;
     }
   }
 
   @Override
-  public Weapon getEquippedWeapon() {
+  public IWeapon getEquippedWeapon() {
     return equippedWeapon;
   }
 
   @Override
-  public CharacterClass getCharacterClass() {
+  public String getCharacterClass() {
     return characterClass;
   }
 }

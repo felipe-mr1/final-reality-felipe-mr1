@@ -5,9 +5,9 @@ import com.github.cc3002.finalreality.model.character.ICharacter;
 import java.util.concurrent.BlockingQueue;
 
 public class Engineer extends PlayerCharacter {
-    public Engineer(final String name,
+    public Engineer(final java.lang.String name,
                      final BlockingQueue<ICharacter> turnsQueue,
-                     final CharacterClass characterclass){
-        super(name, turnsQueue, characterclass);
+                     final String characterClass){
+        super(name, turnsQueue, characterClass);
     }
 }

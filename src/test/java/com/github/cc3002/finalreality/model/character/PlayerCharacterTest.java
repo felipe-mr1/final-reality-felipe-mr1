@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-import com.github.cc3002.finalreality.model.character.player.CharacterClass;
 import com.github.cc3002.finalreality.model.character.player.PlayerCharacter;
 import java.util.EnumMap;
 import java.util.Map;
@@ -20,12 +19,12 @@ import org.junit.jupiter.api.Test;
  */
 class PlayerCharacterTest extends AbstractCharacterTest {
 
-  private static final String BLACK_MAGE_NAME = "Vivi";
-  private static final String KNIGHT_NAME = "Adelbert";
-  private static final String WHITE_MAGE_NAME = "Eiko";
-  private static final String ENGINEER_NAME = "Cid";
-  private static final String THIEF_NAME = "Zidane";
-  private Map<CharacterClass, String> characterNames;
+  private static final java.lang.String BLACK_MAGE_NAME = "Vivi";
+  private static final java.lang.String KNIGHT_NAME = "Adelbert";
+  private static final java.lang.String WHITE_MAGE_NAME = "Eiko";
+  private static final java.lang.String ENGINEER_NAME = "Cid";
+  private static final java.lang.String THIEF_NAME = "Zidane";
+  private Map<String, java.lang.String> characterNames;
 
   /**
    * Setup method.
@@ -35,12 +34,12 @@ class PlayerCharacterTest extends AbstractCharacterTest {
   void setUp() {
     super.basicSetUp();
 
-    characterNames = new EnumMap<>(CharacterClass.class);
-    characterNames.put(CharacterClass.BLACK_MAGE, BLACK_MAGE_NAME);
-    characterNames.put(CharacterClass.KNIGHT, KNIGHT_NAME);
-    characterNames.put(CharacterClass.WHITE_MAGE, WHITE_MAGE_NAME);
-    characterNames.put(CharacterClass.ENGINEER, ENGINEER_NAME);
-    characterNames.put(CharacterClass.THIEF, THIEF_NAME);
+    characterNames = new EnumMap<>(String.class);
+    characterNames.put(String.BLACK_MAGE, BLACK_MAGE_NAME);
+    characterNames.put(String.KNIGHT, KNIGHT_NAME);
+    characterNames.put(String.WHITE_MAGE, WHITE_MAGE_NAME);
+    characterNames.put(String.ENGINEER, ENGINEER_NAME);
+    characterNames.put(String.THIEF, THIEF_NAME);
 
     for (var characterClass :
         characterNames.keySet()) {
@@ -63,8 +62,8 @@ class PlayerCharacterTest extends AbstractCharacterTest {
           character,
           new PlayerCharacter("Test", turns, characterClass),
           new PlayerCharacter(characterName, turns,
-              characterClass == CharacterClass.THIEF ? CharacterClass.BLACK_MAGE
-                  : CharacterClass.THIEF));
+              characterClass == String.THIEF ? String.BLACK_MAGE
+                  : String.THIEF));
       assertNotEquals(character, enemy);
     }
 

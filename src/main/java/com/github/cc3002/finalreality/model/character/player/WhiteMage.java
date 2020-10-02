@@ -6,10 +6,10 @@ import java.util.concurrent.BlockingQueue;
 
 public class WhiteMage extends PlayerCharacter {
     double mana;
-    public WhiteMage(final String name,
+    public WhiteMage(final java.lang.String name,
                      final BlockingQueue<ICharacter> turnsQueue,
-                     final CharacterClass characterclass) {
-        super(name, turnsQueue, characterclass);
+                     final String characterClass) {
+        super(name, turnsQueue, characterClass);
         this.mana = 200;
     }
     public double heal(){

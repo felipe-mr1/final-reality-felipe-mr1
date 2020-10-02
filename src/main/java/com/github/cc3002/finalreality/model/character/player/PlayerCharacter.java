@@ -24,9 +24,9 @@ public class PlayerCharacter extends AbstractCharacter {
    * @param characterClass
    *     the class of this character
    */
-  public PlayerCharacter(@NotNull String name,
+  public PlayerCharacter(@NotNull java.lang.String name,
       @NotNull BlockingQueue<ICharacter> turnsQueue,
-      final CharacterClass characterClass) {
+      final String characterClass) {
     super(turnsQueue, name, characterClass);
   }
 
