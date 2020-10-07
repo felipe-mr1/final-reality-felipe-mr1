@@ -4,6 +4,8 @@ import com.github.cc3002.finalreality.model.character.AbstractCharacter;
 import com.github.cc3002.finalreality.model.character.ICharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
+
+import com.github.cc3002.finalreality.model.weapon.IWeapon;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -28,6 +30,10 @@ public class PlayerCharacter extends AbstractCharacter {
       @NotNull BlockingQueue<ICharacter> turnsQueue,
       final String characterClass) {
     super(turnsQueue, name, characterClass);
+  }
+
+  public void Inventory(IWeapon aWeapon){
+
   }
 
   @Override

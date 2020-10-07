@@ -10,11 +10,15 @@ import java.util.concurrent.BlockingQueue;
 public class BlackMage extends PlayerCharacter {
 
     int mana;
+    int healthPoints;
+    int defensePoints;
     public BlackMage(final java.lang.String name,
                      final BlockingQueue<ICharacter> turnsQueue,
                      final String characterClass){
         super(name, turnsQueue, characterClass);
         this.mana = 200;
+        this.healthPoints = 500;
+        this.defensePoints = 100;
     }
 
     public void equip(IWeapon weapon) throws Exception {

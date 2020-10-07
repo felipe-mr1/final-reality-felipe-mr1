@@ -15,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
 public class Enemy extends AbstractCharacter {
 
   private final int weight;
+  int healthPoints;
 
   /**
    * Creates a new enemy with a name, a weight and the queue with the characters ready to
@@ -24,6 +25,7 @@ public class Enemy extends AbstractCharacter {
                @NotNull final BlockingQueue<ICharacter> turnsQueue) {
     super(turnsQueue, name, "Enemy");
     this.weight = weight;
+    this.healthPoints = 300;
   }
 
   /**
