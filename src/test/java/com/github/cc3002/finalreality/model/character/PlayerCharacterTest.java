@@ -4,9 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-import com.github.cc3002.finalreality.model.character.player.PlayerCharacter;
+import com.github.cc3002.finalreality.model.character.player.*;
+
 import java.util.EnumMap;
 import java.util.Map;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -32,20 +34,25 @@ class PlayerCharacterTest extends AbstractCharacterTest {
    */
   @BeforeEach
   void setUp() {
-    super.basicSetUp();
+    BlackMage BM_Vivi = new BlackMage("Vivi", turns, "Black Mage");
+    Knight K_Adelbert = new Knight("Adelbert", turns, "Knight");
+    WhiteMage WM_Eiko = new WhiteMage("Eiko", turns, "White Mage");
+    Engineer E_Cid = new Engineer("Cid", turns, "Engineer");
+    Thief T_Zidane = new Thief("Zidane", turns, "Thief");
+    //super.basicSetUp();
 
-    characterNames = new EnumMap<>(String.class);
-    characterNames.put(String.BLACK_MAGE, BLACK_MAGE_NAME);
-    characterNames.put(String.KNIGHT, KNIGHT_NAME);
-    characterNames.put(String.WHITE_MAGE, WHITE_MAGE_NAME);
-    characterNames.put(String.ENGINEER, ENGINEER_NAME);
-    characterNames.put(String.THIEF, THIEF_NAME);
+    //characterNames = new EnumMap<>(String.class);
+    //characterNames.put(String.BLACK_MAGE, BLACK_MAGE_NAME);
+    //characterNames.put(String.KNIGHT, KNIGHT_NAME);
+    //characterNames.put(String.WHITE_MAGE, WHITE_MAGE_NAME);
+    //characterNames.put(String.ENGINEER, ENGINEER_NAME);
+    //characterNames.put(String.THIEF, THIEF_NAME);
 
-    for (var characterClass :
-        characterNames.keySet()) {
-      testCharacters.add(
-          new PlayerCharacter(characterNames.get(characterClass), turns, characterClass));
-    }
+    //for (var characterClass :
+        //characterNames.keySet()) {
+      //testCharacters.add(
+          //new PlayerCharacter(characterNames.get(characterClass), turns, characterClass));
+    //}
   }
 
   /**
