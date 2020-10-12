@@ -4,6 +4,8 @@ import com.github.cc3002.finalreality.model.character.AbstractCharacter;
 import com.github.cc3002.finalreality.model.character.ICharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
+
+import com.github.cc3002.finalreality.model.weapon.IWeapon;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -13,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
  * @author <Your name>
  */
 public class PlayerCharacter extends AbstractCharacter {
+  double healthPoints;
 
   /**
    * Creates a new character.
@@ -26,13 +29,17 @@ public class PlayerCharacter extends AbstractCharacter {
    */
   public PlayerCharacter(@NotNull java.lang.String name,
       @NotNull BlockingQueue<ICharacter> turnsQueue,
-      final String characterClass) {
-    super(turnsQueue, name, characterClass);
+      final String characterClass, double healthPoints) {
+    super(turnsQueue, name, characterClass, healthPoints);
   }
+
+  //public void Inventory(IWeapon aWeapon){
+
+  //}
 
   @Override
   public int hashCode() {
-    return Objects.hash(getCharacterClass());
+    return Objects.hash(this.getCharacterClass()) + Objects.hash(this.name);
   }
 
   @Override

@@ -22,7 +22,7 @@ public class Enemy extends AbstractCharacter {
    */
   public Enemy(@NotNull final java.lang.String name, final int weight,
                @NotNull final BlockingQueue<ICharacter> turnsQueue) {
-    super(turnsQueue, name, "Enemy");
+    super(turnsQueue, name, "Enemy", 300);
     this.weight = weight;
   }
 
@@ -33,8 +33,12 @@ public class Enemy extends AbstractCharacter {
     return weight;
   }
 
-  public void equip(IWeapon weapon) throws Exception{
-    throw new Exception("Enemies cant equip weapons");
+  public void equip(IWeapon weapon) {
+    if(weapon.equals(weapon)){
+
+    } else {
+
+    }
   }
 
   @Override
