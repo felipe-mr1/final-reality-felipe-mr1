@@ -1,11 +1,13 @@
 package com.github.cc3002.finalreality.model.weapon;
 
+import com.github.cc3002.finalreality.model.character.ICharacter;
+
 public abstract class AbstractWeapon implements IWeapon {
     private final String name;
     private final int damage;
     private final int weight;
     private final String type;
-    private int magicDamage = 0;
+    private int magicDamage;
 
     protected AbstractWeapon(final String name, final int damage, final int weight,
                              final String type, final int magicDamage) {
@@ -14,6 +16,14 @@ public abstract class AbstractWeapon implements IWeapon {
         this.weight = weight;
         this.type = type;
         this.magicDamage = magicDamage;
+    }
+
+    public boolean equals(IWeapon weapon){
+        if ((this.name.equals(weapon.getName()))&&(this.type.equals(weapon.getType()))){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public String getName() {
@@ -33,5 +43,7 @@ public abstract class AbstractWeapon implements IWeapon {
     public String getType() {
         return type;
     }
+
+    public void equip(ICharacter character) {character.equip(this);}
 
     }

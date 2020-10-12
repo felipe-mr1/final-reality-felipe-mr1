@@ -25,7 +25,7 @@ public interface ICharacter {
   /**
    * Equips a weapon to the character.
    */
-  void equip(IWeapon weapon) throws Exception;
+  void equip(IWeapon weapon);
 
   /**
    * Return this character's equipped weapon.
@@ -36,6 +36,10 @@ public interface ICharacter {
    * Returns this character's class.
    */
   String getCharacterClass();
+
+  double getHealthPoints();
+
+  void setHealthPoints(double value);
 
 
 }

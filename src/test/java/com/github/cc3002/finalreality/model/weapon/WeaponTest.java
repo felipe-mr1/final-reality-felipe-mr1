@@ -38,16 +38,26 @@ class WeaponTest {
     var expectedSword = new Sword(SWORD_NAME, DAMAGE, SPEED, "Sword");
     var expectedBow = new Bow(BOW_NAME, DAMAGE, SPEED, "Bow");
     var expectedKnife = new Knife(KNIFE_NAME, DAMAGE, SPEED, "Knife");
+    var expectedKnife2= new Knife("Knife2",15, 10, "Knife");
 
-    assertEquals(expectedAxe, testAxe);
-    assertEquals(expectedAxe.hashCode(), testAxe.hashCode());
-    assertEquals(expectedStaff, testStaff);
-    assertEquals(expectedStaff.hashCode(), testStaff.hashCode());
-    assertEquals(expectedSword, testSword);
-    assertEquals(expectedSword.hashCode(), testSword.hashCode());
-    assertEquals(expectedBow, testBow);
-    assertEquals(expectedBow.hashCode(), testBow.hashCode());
-    assertEquals(expectedKnife, testKnife);
-    assertEquals(expectedKnife.hashCode(), testKnife.hashCode());
+    testAxe.equals(expectedAxe);
+    testStaff.equals(expectedStaff);
+    testSword.equals(expectedSword);
+    testBow.equals(expectedBow);
+    testKnife.equals(expectedKnife);
+    testAxe.equals(expectedBow);
+    testStaff.equals(expectedAxe);
+    testSword.equals(expectedAxe);
+    testBow.equals(expectedAxe);
+    testKnife.equals(expectedAxe);
+    testKnife.equals(expectedKnife2);
+  }
+
+  @Test
+  void attributesTest(){
+    testAxe.getDamage();
+    testAxe.getWeight();
+    testAxe.getMagicDamage();
+
   }
 }
