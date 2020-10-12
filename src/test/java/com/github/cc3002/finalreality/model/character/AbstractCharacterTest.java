@@ -30,7 +30,7 @@ public abstract class AbstractCharacterTest {
    * Checks that the character waits the appropriate amount of time for it's turn.
    */
   @Test
-  void waitTurnTest() throws Exception {
+  void waitTurnTest(){
     Assertions.assertTrue(turns.isEmpty());
     tryToEquip(testCharacters.get(0));
     testCharacters.get(0).waitTurn();
