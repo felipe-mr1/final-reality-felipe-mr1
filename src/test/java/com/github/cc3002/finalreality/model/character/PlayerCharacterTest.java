@@ -68,6 +68,9 @@ class PlayerCharacterTest extends AbstractCharacterTest {
     assertNotEquals(BM_Vivi.hashCode(), K_Adelbert.hashCode());
   }
 
+  /**
+   * Checks if the character equipped the weapon.
+   */
   @Test
   void equipWeaponTest(){
     assertNull(BM_Vivi.getEquippedWeapon());
@@ -89,19 +92,29 @@ class PlayerCharacterTest extends AbstractCharacterTest {
     assertEquals(testSword, T_Zidane.getEquippedWeapon());
     BM_Vivi.equip(testStaff);
     assertEquals(testStaff, BM_Vivi.getEquippedWeapon());
-    E_Cid.equip(testKnife);
-    assertEquals(testKnife, E_Cid.getEquippedWeapon());
     T_Zidane.equip(testStaff);
     assertEquals(testStaff, T_Zidane.getEquippedWeapon());
-    K_Adelbert.equip(testBow);
-    assertEquals(testBow, K_Adelbert.getEquippedWeapon());
-    E_Cid.equip(testSword);
-    assertEquals(testSword, E_Cid.getEquippedWeapon());
     E_Cid.equip(testBow);
     assertEquals(testBow, E_Cid.getEquippedWeapon());
     K_Adelbert.equip(testKnife);
     assertEquals(testKnife, K_Adelbert.getEquippedWeapon());
     K_Adelbert.equip(testAxe);
     assertEquals(testAxe, K_Adelbert.getEquippedWeapon());
+  }
+
+  /**
+   * UNFINISHED, have to work on the method equip.
+   * Checking the 'if' conditions on the method equip.
+   *
+   * Checks that the character didnt equip the weapon.
+   */
+  @Test
+  void cantequipweaponTest(){
+    E_Cid.equip(testKnife); //aqui
+    assertEquals(testKnife, E_Cid.getEquippedWeapon());
+    K_Adelbert.equip(testBow); //aqui
+    assertEquals(testBow, K_Adelbert.getEquippedWeapon());
+    E_Cid.equip(testSword); // aqui
+    assertEquals(testSword, E_Cid.getEquippedWeapon());
   }
 }

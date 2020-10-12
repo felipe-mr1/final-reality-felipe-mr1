@@ -12,12 +12,19 @@ class EnemyTest extends AbstractCharacterTest {
 
   private static final java.lang.String ENEMY_NAME = "Goblin";
 
+  /**
+   * Setup method.
+   * Creates a new enemy named Goblin
+   */
   @BeforeEach
   void setUp() {
     basicSetUp();
     testCharacters.add(new Enemy(ENEMY_NAME, 10, turns));
   }
 
+  /**
+   * Checks that the enemies created are different from each other.
+   */
   @Test
   void constructorTest() {
     Enemy goblin = new Enemy("goblin", 15, turns);

@@ -22,6 +22,10 @@ class WeaponTest {
   private IWeapon testBow;
   private IWeapon testKnife;
 
+  /**
+   * Setup method.
+   * Creates 5 tests weapons.
+   */
   @BeforeEach
   void setUp() {
     testAxe = new Axe(AXE_NAME, DAMAGE, SPEED, "Axe");
@@ -31,6 +35,9 @@ class WeaponTest {
     testKnife = new Knife(KNIFE_NAME, DAMAGE, SPEED, "Knife");
   }
 
+  /**
+   * Checks the constructor method and sees if we are dealing with 2 different objects.
+   */
   @Test
   void constructorTest() {
     var expectedAxe = new Axe(AXE_NAME, DAMAGE, SPEED, "Axe");
@@ -53,6 +60,9 @@ class WeaponTest {
     assertFalse(testKnife.equals(expectedKnife2));
   }
 
+  /**
+   * Checks if we can get attributes of the weapons.
+   */
   @Test
   void attributesTest(){
     assertEquals(15, testAxe.getDamage());
