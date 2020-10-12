@@ -48,7 +48,7 @@ public abstract class AbstractCharacterTest {
     }
   }
 
-  private void tryToEquip(ICharacter character) throws Exception {
+  private void tryToEquip(ICharacter character) {
     character.equip(testWeapon);
   }
 

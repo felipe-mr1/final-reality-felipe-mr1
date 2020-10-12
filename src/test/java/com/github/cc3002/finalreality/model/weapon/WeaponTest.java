@@ -1,9 +1,9 @@
 package com.github.cc3002.finalreality.model.weapon;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class WeaponTest {
 
@@ -40,24 +40,24 @@ class WeaponTest {
     var expectedKnife = new Knife(KNIFE_NAME, DAMAGE, SPEED, "Knife");
     var expectedKnife2= new Knife("Knife2",15, 10, "Knife");
 
-    testAxe.equals(expectedAxe);
-    testStaff.equals(expectedStaff);
-    testSword.equals(expectedSword);
-    testBow.equals(expectedBow);
-    testKnife.equals(expectedKnife);
-    testAxe.equals(expectedBow);
-    testStaff.equals(expectedAxe);
-    testSword.equals(expectedAxe);
-    testBow.equals(expectedAxe);
-    testKnife.equals(expectedAxe);
-    testKnife.equals(expectedKnife2);
+    assertTrue(testAxe.equals(expectedAxe));
+    assertTrue(testStaff.equals(expectedStaff));
+    assertTrue(testSword.equals(expectedSword));
+    assertTrue(testBow.equals(expectedBow));
+    assertTrue(testKnife.equals(expectedKnife));
+    assertFalse(testAxe.equals(expectedBow));
+    assertFalse(testStaff.equals(expectedAxe));
+    assertFalse(testSword.equals(expectedAxe));
+    assertFalse(testBow.equals(expectedAxe));
+    assertFalse(testKnife.equals(expectedAxe));
+    assertFalse(testKnife.equals(expectedKnife2));
   }
 
   @Test
   void attributesTest(){
-    testAxe.getDamage();
-    testAxe.getWeight();
-    testAxe.getMagicDamage();
+    assertEquals(15, testAxe.getDamage());
+    assertEquals(10, testAxe.getWeight());
+    assertEquals(0,testAxe.getMagicDamage());
 
   }
 }

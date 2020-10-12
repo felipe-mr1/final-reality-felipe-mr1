@@ -1,16 +1,14 @@
 package com.github.cc3002.finalreality.model.character;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-
 import com.github.cc3002.finalreality.model.character.player.*;
 
-import java.util.Map;
+
 
 import com.github.cc3002.finalreality.model.weapon.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Set of tests for the {@code GameCharacter} class.
@@ -31,12 +29,7 @@ class PlayerCharacterTest extends AbstractCharacterTest {
   Axe testAxe;
   Bow testBow;
   Knife testKnife;
-  private static final java.lang.String BLACK_MAGE_NAME = "Vivi";
-  private static final java.lang.String KNIGHT_NAME = "Adelbert";
-  private static final java.lang.String WHITE_MAGE_NAME = "Eiko";
-  private static final java.lang.String ENGINEER_NAME = "Cid";
-  private static final java.lang.String THIEF_NAME = "Zidane";
-  private Map<String, java.lang.String> characterNames;
+
 
   /**
    * Setup method.
@@ -60,20 +53,6 @@ class PlayerCharacterTest extends AbstractCharacterTest {
     testSword = new Sword("Sword", 15, 10, "Sword");
     testBow = new Bow("Bow", 12, 8, "Bow");
     testKnife = new Knife("Knife", 8, 4, "Knife");
-    //super.basicSetUp();
-
-    //characterNames = new EnumMap<>(String.class);
-    //characterNames.put(String.BLACK_MAGE, BLACK_MAGE_NAME);
-    //characterNames.put(String.KNIGHT, KNIGHT_NAME);
-    //characterNames.put(String.WHITE_MAGE, WHITE_MAGE_NAME);
-    //characterNames.put(String.ENGINEER, ENGINEER_NAME);
-    //characterNames.put(String.THIEF, THIEF_NAME);
-
-    //for (var characterClass :
-        //characterNames.keySet()) {
-      //testCharacters.add(
-          //new PlayerCharacter(characterNames.get(characterClass), turns, characterClass));
-    //}
   }
 
   /**
@@ -84,30 +63,45 @@ class PlayerCharacterTest extends AbstractCharacterTest {
     Enemy enemy = new Enemy("Enemy", 10, turns);
     assertNotEquals(BM_Vivi, enemy);
     assertNotEquals(BM_Vivi, K_Adelbert);
-    BM_Vivi.equals(K_Adelbert);
-    BM_Vivi.getName();
+    assertFalse(BM_Vivi.equals(K_Adelbert));
+    assertEquals("Vivi", BM_Vivi.getName());
+    assertNotEquals(BM_Vivi.hashCode(), K_Adelbert.hashCode());
   }
 
   @Test
-  void equipWeaponTest() throws Exception {
+  void equipWeaponTest(){
     assertNull(BM_Vivi.getEquippedWeapon());
     assertNull(K_Adelbert.getEquippedWeapon());
     assertNull(WM_Eiko.getEquippedWeapon());
     assertNull(E_Cid.getEquippedWeapon());
     assertNull(T_Zidane.getEquippedWeapon());
     BM_Vivi.equip(testKnife);
+    assertEquals(testKnife, BM_Vivi.getEquippedWeapon());
     K_Adelbert.equip(testSword);
+    assertEquals(testSword, K_Adelbert.getEquippedWeapon());
     WM_Eiko.equip(testStaff);
+    assertEquals(testStaff, WM_Eiko.getEquippedWeapon());
     E_Cid.equip(testAxe);
+    assertEquals(testAxe, E_Cid.getEquippedWeapon());
     T_Zidane.equip(testBow);
+    assertEquals(testBow, T_Zidane.getEquippedWeapon());
     T_Zidane.equip(testSword); // branches
+    assertEquals(testSword, T_Zidane.getEquippedWeapon());
     BM_Vivi.equip(testStaff);
+    assertEquals(testStaff, BM_Vivi.getEquippedWeapon());
     E_Cid.equip(testKnife);
+    assertEquals(testKnife, E_Cid.getEquippedWeapon());
     T_Zidane.equip(testStaff);
+    assertEquals(testStaff, T_Zidane.getEquippedWeapon());
     K_Adelbert.equip(testBow);
+    assertEquals(testBow, K_Adelbert.getEquippedWeapon());
     E_Cid.equip(testSword);
+    assertEquals(testSword, E_Cid.getEquippedWeapon());
     E_Cid.equip(testBow);
+    assertEquals(testBow, E_Cid.getEquippedWeapon());
     K_Adelbert.equip(testKnife);
+    assertEquals(testKnife, K_Adelbert.getEquippedWeapon());
     K_Adelbert.equip(testAxe);
+    assertEquals(testAxe, K_Adelbert.getEquippedWeapon());
   }
 }

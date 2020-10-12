@@ -37,8 +37,18 @@ public interface ICharacter {
    */
   String getCharacterClass();
 
+  /**
+   *
+   * @return this character's HP
+   */
   double getHealthPoints();
 
+  /**
+   *
+   * @param value
+   *
+   * sets this character's HP according to the value.
+   */
   void setHealthPoints(double value);
 
 
