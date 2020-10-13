@@ -75,7 +75,9 @@ public abstract class AbstractCharacter implements ICharacter {
     return characterClass;
   }
 
+  @Override
   public double getHealthPoints() {return healthPoints;}
 
+  @Override
   public void setHealthPoints(double value) {this.healthPoints= this.healthPoints + value;}
 }
