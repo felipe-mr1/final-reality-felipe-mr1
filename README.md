@@ -25,8 +25,8 @@ algunos puntos, por ejemplo, el uso de magias.
 
 Es así como cada clase de personaje es una subclase de 'Player Character', la cual contiene los metedos 'equals',
 'hashcode' y 'equip', y esta es subclase de 'Abstract Character'. Un aspecto a considerar fue que si bien tanto enemigos como
-personajes comparten ciertos metodos existen ciertas diferencias como que los enemigos no pueden equipar armas y, también, da
-abre a la idea a que pueden existir otras diferencias por lo que la clase 'Enemies' es directamente subclase de
+personajes comparten ciertos metodos, existen ciertas diferencias como que los enemigos no pueden equipar armas y, también, da
+lugar a la idea a que pueden existir otras diferencias por lo que la clase 'Enemies' es directamente subclase de
 'Abstract Character'.
 
 Para el paquete 'Weapons' se sigue la misma idea, donde tenemos una clase para cada arma que son subclases de 'Abstract Weapon'.
