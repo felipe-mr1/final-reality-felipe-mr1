@@ -24,6 +24,7 @@ class PlayerCharacterTest extends AbstractCharacterTest {
   WhiteMage WM_Eiko;
   Engineer E_Cid;
   Thief T_Zidane;
+  BlackMage BM_Perrito;
   Sword testSword;
   Staff testStaff;
   Axe testAxe;
@@ -39,6 +40,7 @@ class PlayerCharacterTest extends AbstractCharacterTest {
   void setUp() {
     super.basicSetUp();
     BM_Vivi = new BlackMage("Vivi", turns, "Black Mage");
+    BM_Perrito = new BlackMage("Perrito", turns, "Black Mage");
     K_Adelbert = new Knight("Adelbert", turns, "Knight");
     WM_Eiko = new WhiteMage("Eiko", turns, "White Mage");
     E_Cid = new Engineer("Cid", turns, "Engineer");
@@ -64,6 +66,7 @@ class PlayerCharacterTest extends AbstractCharacterTest {
     assertNotEquals(BM_Vivi, enemy);
     assertNotEquals(BM_Vivi, K_Adelbert);
     assertFalse(BM_Vivi.equals(K_Adelbert));
+    assertFalse(BM_Vivi.equals(BM_Perrito));
     assertEquals("Vivi", BM_Vivi.getName());
     assertNotEquals(BM_Vivi.hashCode(), K_Adelbert.hashCode());
   }
@@ -109,12 +112,23 @@ class PlayerCharacterTest extends AbstractCharacterTest {
    * Checks that the character didnt equip the weapon.
    */
   @Test
-  void cantequipweaponTest(){
+  void cantEquipWeaponTest(){
     E_Cid.equip(testKnife); //aqui
     assertEquals(testKnife, E_Cid.getEquippedWeapon());
     K_Adelbert.equip(testBow); //aqui
     assertEquals(testBow, K_Adelbert.getEquippedWeapon());
     E_Cid.equip(testSword); // aqui
     assertEquals(testSword, E_Cid.getEquippedWeapon());
+  }
+
+  /**
+   * Checks if the attributes of the characters are
+   * well settled.
+   */
+  @Test
+  void attributesTest(){
+    assertEquals(500, BM_Vivi.getHealthPoints());
+    BM_Vivi.setHealthPoints(50);
+    assertEquals(550,BM_Vivi.getHealthPoints());
   }
 }
