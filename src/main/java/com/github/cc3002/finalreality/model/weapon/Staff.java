@@ -10,10 +10,8 @@ public class Staff extends AbstractWeapon {
         this.magicDamage = magicDamage;
     }
     public void equip(ICharacter character) {
-        String clase = character.getCharacterClass();
         if ((character.getCharacterClass().equals("Black Mage"))||(character.getCharacterClass().equals("Thief"))||(character.getCharacterClass().equals("White Mage"))){
-            int i = 0;
-            i++;
+            character.equipStaff(this);
         } else {
             int k = 0;
             k++;

@@ -1,6 +1,6 @@
 package com.github.cc3002.finalreality.model.character;
 
-import com.github.cc3002.finalreality.model.weapon.IWeapon;
+import com.github.cc3002.finalreality.model.weapon.*;
 
 /**
  * This represents a character from the game.
@@ -52,4 +52,13 @@ public interface ICharacter {
   void setHealthPoints(double value);
 
 
+  void equipStaff(Staff staff);
+
+  void equipAxe(Axe axe);
+
+  void equipBow(Bow bow);
+
+  void equipKnife(Knife knife);
+
+  void equipSword(Sword sword);
 }

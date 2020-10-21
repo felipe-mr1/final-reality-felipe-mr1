@@ -15,8 +15,16 @@ public class Engineer extends PlayerCharacter {
     }
     public void equip(IWeapon weapon) {
         weapon.equip(this);
-        super.equip(weapon);
     }
+
+    @Override
+    public void equipKnife(Knife knife){super.equip(knife);}
+
+    @Override
+    public void equipAxe(Axe axe){super.equip(axe);}
+
+    @Override
+    public void equipBow(Bow bow){super.equip(bow);}
     //public void equip(IWeapon weapon) throws Exception {
         //if (!(weapon instanceof Axe | weapon instanceof Bow)){
             //throw new Exception("Can't equip that type of weapon");

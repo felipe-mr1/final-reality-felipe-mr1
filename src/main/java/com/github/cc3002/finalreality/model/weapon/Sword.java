@@ -11,8 +11,7 @@ public class Sword extends AbstractWeapon {
     @Override
     public void equip(ICharacter character) {
         if ((character.getCharacterClass().equals("Thief"))||(character.getCharacterClass().equals("Knight"))){
-            int i= 0;
-            i++;
+            character.equipSword(this);
         } else {
             int k= 0;
             k++;

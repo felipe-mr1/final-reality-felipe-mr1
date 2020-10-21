@@ -1,12 +1,13 @@
 package com.github.cc3002.finalreality.model.character;
 
 import com.github.cc3002.finalreality.model.character.player.PlayerCharacter;
-import com.github.cc3002.finalreality.model.weapon.IWeapon;
+import com.github.cc3002.finalreality.model.weapon.*;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -64,6 +65,21 @@ public abstract class AbstractCharacter implements ICharacter {
       this.equippedWeapon = weapon;
     }
   }
+
+  @Override
+  public void equipStaff(Staff weapon){}
+
+  @Override
+  public void equipAxe(Axe weapon){}
+
+  @Override
+  public void equipBow(Bow weapon){}
+
+  @Override
+  public void equipKnife(Knife weapon){}
+
+  @Override
+  public void equipSword(Sword weapon){}
 
   @Override
   public IWeapon getEquippedWeapon() {
