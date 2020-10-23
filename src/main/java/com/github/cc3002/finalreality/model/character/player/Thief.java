@@ -10,7 +10,7 @@ public class Thief extends PlayerCharacter {
     public Thief(final java.lang.String name,
                     final BlockingQueue<ICharacter> turnsQueue,
                     final String characterClass){
-        super(name, turnsQueue, characterClass, 600);
+        super(name, turnsQueue, characterClass, 600, 2);
         this.defensePoints = 100;
     }
     public void equip(IWeapon weapon) {
@@ -22,6 +22,9 @@ public class Thief extends PlayerCharacter {
 
     @Override
     public void equipSword(Sword sword){super.equip(sword);}
+
+    @Override
+    public void equipBow(Bow bow){super.equip(bow);}
     //public void equip(IWeapon weapon) throws Exception {
         //if (!(weapon instanceof Sword | weapon instanceof Bow | weapon instanceof Staff)){
             //throw new Exception("Can't equip that type of weapon");

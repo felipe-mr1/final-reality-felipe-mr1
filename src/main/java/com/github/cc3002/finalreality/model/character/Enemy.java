@@ -16,13 +16,14 @@ public class Enemy extends AbstractCharacter {
 
   private final int weight;
 
+
   /**
    * Creates a new enemy with a name, a weight and the queue with the characters ready to
    * play.
    */
   public Enemy(@NotNull final java.lang.String name, final int weight,
                @NotNull final BlockingQueue<ICharacter> turnsQueue) {
-    super(turnsQueue, name, "Enemy", 300);
+    super(turnsQueue, name, "Enemy", 300, 0);
     this.weight = weight;
   }
 
@@ -39,6 +40,16 @@ public class Enemy extends AbstractCharacter {
     } else {
 
     }
+  }
+
+  @Override
+  public void attack(ICharacter character) {
+    character.setHealthPoints(20);
+  }
+
+  @Override
+  public int getDefensePoints() {
+    return 0;
   }
 
   @Override

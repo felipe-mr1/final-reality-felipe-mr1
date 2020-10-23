@@ -52,4 +52,6 @@ public interface IWeapon {
      * Checks if the character can equip the weapon.
      */
     void equip(ICharacter character);
+
+    void attack(ICharacter enemy);
 }

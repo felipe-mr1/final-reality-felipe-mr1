@@ -61,4 +61,8 @@ public interface ICharacter {
   void equipKnife(Knife knife);
 
   void equipSword(Sword sword);
+
+  void attack(ICharacter character);
+
+  int getDefensePoints();
 }

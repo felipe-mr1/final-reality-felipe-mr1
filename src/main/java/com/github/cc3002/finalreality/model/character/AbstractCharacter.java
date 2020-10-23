@@ -24,13 +24,15 @@ public abstract class AbstractCharacter implements ICharacter {
   private IWeapon equippedWeapon = null;
   private ScheduledExecutorService scheduledExecutor;
   private double healthPoints;
+  private int defensePoints;
 
   protected AbstractCharacter(@NotNull BlockingQueue<ICharacter> turnsQueue,
-                              @NotNull java.lang.String name, String characterClass, double healthPoints) {
+                              @NotNull java.lang.String name, String characterClass, double healthPoints, int defensePoints) {
     this.turnsQueue = turnsQueue;
     this.name = name;
     this.characterClass = characterClass;
     this.healthPoints = healthPoints;
+    this.defensePoints = defensePoints;
   }
 
   @Override
@@ -61,7 +63,7 @@ public abstract class AbstractCharacter implements ICharacter {
 
   @Override
   public void equip(IWeapon weapon) {
-    if (this instanceof PlayerCharacter) {
+    if ((this instanceof PlayerCharacter)&&(this.getHealthPoints()>0)) {
       this.equippedWeapon = weapon;
     }
   }
@@ -95,5 +97,9 @@ public abstract class AbstractCharacter implements ICharacter {
   public double getHealthPoints() {return healthPoints;}
 
   @Override
-  public void setHealthPoints(double value) {this.healthPoints= this.healthPoints + value;}
+  public void setHealthPoints(double value) {this.healthPoints = this.healthPoints - value;}
+
+  public void attack(ICharacter character){getEquippedWeapon().attack(character);}
+
+  public int getDefensePoints(){return this.defensePoints;}
 }

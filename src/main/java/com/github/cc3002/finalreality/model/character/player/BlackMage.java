@@ -10,24 +10,26 @@ import java.util.concurrent.BlockingQueue;
 public class BlackMage extends PlayerCharacter {
 
     int mana;
-    int defensePoints;
     public BlackMage(final java.lang.String name,
                      final BlockingQueue<ICharacter> turnsQueue,
                      final String characterClass){
-        super(name, turnsQueue, characterClass, 500);
+        super(name, turnsQueue, characterClass, 500, 2);
         this.mana = 200;
-        this.defensePoints = 100;
     }
 
 
     public void equip(IWeapon weapon) {
         weapon.equip(this);
     }
+
     @Override
     public void equipStaff(Staff staff) {super.equip(staff);}
 
     @Override
     public void equipKnife(Knife knife) {super.equip(knife);}
+
+    //@Override
+    //public void attack(ICharacter enemy){getEquippedWeapon().attack(enemy);}
     //public void equip(IWeapon weapon) throws Exception {
         //if (!(weapon instanceof Staff | weapon instanceof Knife)){
             //throw new Exception("Can't equip that type of weapon");

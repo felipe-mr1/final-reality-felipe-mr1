@@ -12,9 +12,6 @@ public class Knife extends AbstractWeapon {
     public void equip(ICharacter character) {
         if ((character.getCharacterClass().equals("Knight"))||(character.getCharacterClass().equals("Black Mage"))){
             character.equipKnife(this);
-        } else {
-            int k = 0;
-            k++;
         }
     }
 }

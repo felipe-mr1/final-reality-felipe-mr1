@@ -40,6 +40,6 @@ class EnemyTest extends AbstractCharacterTest {
     checkConstruction(new Enemy(ENEMY_NAME, 10, turns),
         testCharacters.get(0),
         new Enemy(ENEMY_NAME, 11, turns),
-        new PlayerCharacter(ENEMY_NAME, turns, "String.THIEF", 10));
+        new PlayerCharacter(ENEMY_NAME, turns, "String.THIEF", 10,0));
   }
 }

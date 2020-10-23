@@ -12,9 +12,6 @@ public class Axe extends AbstractWeapon {
     public void equip(ICharacter character) {
         if ((character.getCharacterClass().equals("Engineer"))||(character.getCharacterClass().equals("Knight"))){
             character.equipAxe(this);
-        } else {
-            int k = 0;
-            k++;
         }
     }
 }

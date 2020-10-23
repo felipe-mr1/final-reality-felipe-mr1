@@ -12,7 +12,7 @@ public class WhiteMage extends PlayerCharacter {
     public WhiteMage(final java.lang.String name,
                      final BlockingQueue<ICharacter> turnsQueue,
                      final String characterClass) {
-        super(name, turnsQueue, characterClass, 500);
+        super(name, turnsQueue, characterClass, 500, 1);
         this.mana = 200;
         this.defensePoints = 100;
     }
