@@ -34,13 +34,6 @@ public class Enemy extends AbstractCharacter {
     return weight;
   }
 
-  public void equip(IWeapon weapon) {
-    if(weapon.equals(weapon)){
-
-    } else {
-
-    }
-  }
 
   @Override
   public void attack(ICharacter character) {

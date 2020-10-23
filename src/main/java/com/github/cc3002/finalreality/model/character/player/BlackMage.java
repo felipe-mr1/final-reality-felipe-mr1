@@ -22,11 +22,11 @@ public class BlackMage extends PlayerCharacter {
         weapon.equip(this);
     }
 
-    @Override
-    public void equipStaff(Staff staff) {super.equip(staff);}
+    //@Override
+    //public void equipStaff(Staff staff) {super.equipStaff(staff);}
 
-    @Override
-    public void equipKnife(Knife knife) {super.equip(knife);}
+    //@Override
+    //public void equipKnife(Knife knife) {super.equipKnife(knife);}
 
 
 

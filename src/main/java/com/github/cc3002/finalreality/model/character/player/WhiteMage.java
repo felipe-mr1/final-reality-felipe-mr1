@@ -19,8 +19,8 @@ public class WhiteMage extends PlayerCharacter {
         weapon.equip(this);
     }
 
-    @Override
-    public void equipStaff(Staff staff){super.equip(staff);}
+    //@Override
+    //public void equipStaff(Staff staff){super.equipStaff(staff);}
 
 
     //public double heal(){

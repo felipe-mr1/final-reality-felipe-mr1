@@ -64,24 +64,25 @@ public abstract class AbstractCharacter implements ICharacter {
   @Override
   public void equip(IWeapon weapon) {
     if ((this instanceof PlayerCharacter)&&(this.getHealthPoints()>0)) {
-      this.equippedWeapon = weapon;
+      weapon.equip(this);
+      //this.equippedWeapon = weapon;
     }
   }
 
   @Override
-  public void equipStaff(Staff weapon){}
+  public void equipStaff(Staff weapon){this.equippedWeapon = weapon;}
 
   @Override
-  public void equipAxe(Axe weapon){}
+  public void equipAxe(Axe weapon){this.equippedWeapon = weapon;}
 
   @Override
-  public void equipBow(Bow weapon){}
+  public void equipBow(Bow weapon){this.equippedWeapon = weapon;}
 
   @Override
-  public void equipKnife(Knife weapon){}
+  public void equipKnife(Knife weapon){this.equippedWeapon = weapon;}
 
   @Override
-  public void equipSword(Sword weapon){}
+  public void equipSword(Sword weapon){this.equippedWeapon = weapon;}
 
   @Override
   public IWeapon getEquippedWeapon() {
