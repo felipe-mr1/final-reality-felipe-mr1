@@ -28,14 +28,7 @@ public class BlackMage extends PlayerCharacter {
     @Override
     public void equipKnife(Knife knife) {super.equip(knife);}
 
-    //@Override
-    //public void attack(ICharacter enemy){getEquippedWeapon().attack(enemy);}
-    //public void equip(IWeapon weapon) throws Exception {
-        //if (!(weapon instanceof Staff | weapon instanceof Knife)){
-            //throw new Exception("Can't equip that type of weapon");
-        //}
-        //super.equip(weapon);
-    //}
+
 
 
     // have to add the effect of thunder

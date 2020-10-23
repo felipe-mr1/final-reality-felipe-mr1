@@ -25,10 +25,5 @@ public class Thief extends PlayerCharacter {
 
     @Override
     public void equipBow(Bow bow){super.equip(bow);}
-    //public void equip(IWeapon weapon) throws Exception {
-        //if (!(weapon instanceof Sword | weapon instanceof Bow | weapon instanceof Staff)){
-            //throw new Exception("Can't equip that type of weapon");
-        //}
-        //super.equip(weapon);
-    //}
+
 }

@@ -8,13 +8,11 @@ import java.util.concurrent.BlockingQueue;
 
 public class WhiteMage extends PlayerCharacter {
     double mana;
-    int defensePoints;
     public WhiteMage(final java.lang.String name,
                      final BlockingQueue<ICharacter> turnsQueue,
                      final String characterClass) {
         super(name, turnsQueue, characterClass, 500, 1);
         this.mana = 200;
-        this.defensePoints = 100;
     }
 
     public void equip(IWeapon weapon) {
@@ -23,12 +21,7 @@ public class WhiteMage extends PlayerCharacter {
 
     @Override
     public void equipStaff(Staff staff){super.equip(staff);}
-    //public void equip(IWeapon weapon) throws Exception {
-        //if (!(weapon instanceof Staff)){
-            //throw new Exception("Can't equip that type of weapon");
-        //}
-        //super.equip(weapon);
-    //}
+
 
     //public double heal(){
         //assert this.mana > 15;

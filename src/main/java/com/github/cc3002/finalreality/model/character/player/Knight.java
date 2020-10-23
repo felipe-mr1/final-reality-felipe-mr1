@@ -23,10 +23,5 @@ public class Knight extends PlayerCharacter {
 
     @Override
     public void equipAxe(Axe axe){super.equip(axe);}
-    //public void equip(IWeapon weapon) throws Exception {
-        //if (!(weapon instanceof Axe | weapon instanceof Knife | weapon instanceof Sword)){
-            //throw new Exception("Can't equip that type of weapon");
-        //}
-        //super.equip(weapon);
-    //}
+
 }
