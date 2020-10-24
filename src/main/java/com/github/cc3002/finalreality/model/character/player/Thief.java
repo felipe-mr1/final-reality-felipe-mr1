@@ -17,13 +17,13 @@ public class Thief extends PlayerCharacter {
         weapon.equip(this);
     }
 
-    //@Override
-    //public void equipStaff(Staff staff){super.equipStaff(staff);}
+    @Override
+    public void equipStaff(Staff staff){super.equip(staff);}
 
-    //@Override
-    //public void equipSword(Sword sword){super.equipSword(sword);}
+    @Override
+    public void equipSword(Sword sword){super.equip(sword);}
 
-    //@Override
-    //public void equipBow(Bow bow){super.equipBow(bow);}
+    @Override
+    public void equipBow(Bow bow){super.equip(bow);}
 
 }

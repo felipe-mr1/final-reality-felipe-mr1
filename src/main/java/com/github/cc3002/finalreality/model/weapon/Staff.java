@@ -9,12 +9,12 @@ public class Staff extends AbstractWeapon {
         super(name, damage, weight, type, magicDamage);
         this.magicDamage = magicDamage;
     }
-    public void equip(ICharacter character) {
-        if ((character.getCharacterClass().equals("Black Mage"))||(character.getCharacterClass().equals("Thief"))||(character.getCharacterClass().equals("White Mage"))){
-            character.equipStaff(this);
-        } else {
-            int k = 0;
-            k++;
-        }
-    }
+    public void equip(ICharacter character) {character.equipStaff(this);}
+        //if ((character.getCharacterClass().equals("Black Mage"))||(character.getCharacterClass().equals("Thief"))||(character.getCharacterClass().equals("White Mage"))){
+            //character.equipStaff(this);
+        //} else {
+            //int k = 0;
+            //k++;
+        //}
+    //}
 }

@@ -34,6 +34,8 @@ public class Enemy extends AbstractCharacter {
     return weight;
   }
 
+  @Override
+  public void equip(IWeapon weapon){weapon.equip(this);}
 
   @Override
   public void attack(ICharacter character) {

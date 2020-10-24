@@ -17,13 +17,11 @@ public class Engineer extends PlayerCharacter {
         weapon.equip(this);
     }
 
-    //@Override
-    //public void equipKnife(Knife knife){super.equipKnife(knife);}
 
-    //@Override
-    //public void equipAxe(Axe axe){super.equipAxe(axe);}
+    @Override
+    public void equipAxe(Axe axe){super.equip(axe);}
 
-    //@Override
-    //public void equipBow(Bow bow){super.equipBow(bow);}
+    @Override
+    public void equipBow(Bow bow){super.equip(bow);}
 
 }

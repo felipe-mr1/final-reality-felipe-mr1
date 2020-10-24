@@ -15,13 +15,13 @@ public class Knight extends PlayerCharacter {
         weapon.equip(this);
     }
 
-    //@Override
-    //public void equipKnife(Knife knife){super.equipKnife(knife);}
+    @Override
+    public void equipKnife(Knife knife){super.equip(knife);}
 
-    //@Override
-    //public void equipSword(Sword sword) {super.equipSword(sword);}
+    @Override
+    public void equipSword(Sword sword) {super.equip(sword);}
 
-    //@Override
-    //public void equipAxe(Axe axe){super.equipAxe(axe);}
+    @Override
+    public void equipAxe(Axe axe){super.equip(axe);}
 
 }
