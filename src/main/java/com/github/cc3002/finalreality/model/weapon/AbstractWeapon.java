@@ -55,6 +55,7 @@ public abstract class AbstractWeapon implements IWeapon {
         return type;
     }
 
+
     @Override
     public void equip(ICharacter character) {character.equip(this);}
 

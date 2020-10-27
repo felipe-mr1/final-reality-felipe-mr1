@@ -54,4 +54,5 @@ public interface IWeapon {
     void equip(ICharacter character);
 
     void attack(ICharacter enemy);
+
 }
