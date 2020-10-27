@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
  * @author <Your name>
  */
 public class PlayerCharacter extends AbstractCharacter {
-  double healthPoints;
+
 
   /**
    * Creates a new character.
@@ -29,13 +29,10 @@ public class PlayerCharacter extends AbstractCharacter {
    */
   public PlayerCharacter(@NotNull java.lang.String name,
       @NotNull BlockingQueue<ICharacter> turnsQueue,
-      final String characterClass, double healthPoints) {
-    super(turnsQueue, name, characterClass, healthPoints);
+      final String characterClass, double healthPoints, int defensePoints) {
+    super(turnsQueue, name, characterClass, healthPoints, defensePoints);
   }
 
-  //public void Inventory(IWeapon aWeapon){
-
-  //}
 
   @Override
   public int hashCode() {

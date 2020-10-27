@@ -13,7 +13,7 @@ public abstract class AbstractWeapon implements IWeapon {
     private final int damage;
     private final int weight;
     private final String type;
-    private int magicDamage;
+    private final int magicDamage;
 
     protected AbstractWeapon(final String name, final int damage, final int weight,
                              final String type, final int magicDamage) {
@@ -26,11 +26,7 @@ public abstract class AbstractWeapon implements IWeapon {
 
     @Override
     public boolean equals(IWeapon weapon){
-        if ((this.name.equals(weapon.getName()))&&(this.type.equals(weapon.getType()))){
-            return true;
-        } else {
-            return false;
-        }
+        return (this.name.equals(weapon.getName())) && (this.type.equals(weapon.getType()));
     }
 
     @Override
@@ -59,7 +55,15 @@ public abstract class AbstractWeapon implements IWeapon {
         return type;
     }
 
+
     @Override
     public void equip(ICharacter character) {character.equip(this);}
 
+    @Override
+    public void attack(ICharacter enemy) {
+        if (enemy.getHealthPoints()>0) {
+            int damage = this.damage - enemy.getDefensePoints();
+            enemy.setHealthPoints(damage);
+        }
+    }
     }

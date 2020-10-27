@@ -113,12 +113,12 @@ class PlayerCharacterTest extends AbstractCharacterTest {
    */
   @Test
   void cantEquipWeaponTest(){
-    E_Cid.equip(testKnife); //aqui
-    assertEquals(testKnife, E_Cid.getEquippedWeapon());
-    K_Adelbert.equip(testBow); //aqui
-    assertEquals(testBow, K_Adelbert.getEquippedWeapon());
-    E_Cid.equip(testSword); // aqui
-    assertEquals(testSword, E_Cid.getEquippedWeapon());
+    E_Cid.equip(testKnife);
+    assertNotEquals(testKnife, E_Cid.getEquippedWeapon());
+    K_Adelbert.equip(testBow);
+    assertNotEquals(testBow, K_Adelbert.getEquippedWeapon());
+    E_Cid.equip(testSword);
+    assertNotEquals(testSword, E_Cid.getEquippedWeapon());
   }
 
   /**
@@ -129,6 +129,6 @@ class PlayerCharacterTest extends AbstractCharacterTest {
   void attributesTest(){
     assertEquals(500, BM_Vivi.getHealthPoints());
     BM_Vivi.setHealthPoints(50);
-    assertEquals(550,BM_Vivi.getHealthPoints());
+    assertEquals(450,BM_Vivi.getHealthPoints());
   }
 }

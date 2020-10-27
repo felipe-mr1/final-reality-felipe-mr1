@@ -1,12 +1,13 @@
 package com.github.cc3002.finalreality.model.character;
 
 import com.github.cc3002.finalreality.model.character.player.PlayerCharacter;
-import com.github.cc3002.finalreality.model.weapon.IWeapon;
+import com.github.cc3002.finalreality.model.weapon.*;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -23,13 +24,15 @@ public abstract class AbstractCharacter implements ICharacter {
   private IWeapon equippedWeapon = null;
   private ScheduledExecutorService scheduledExecutor;
   private double healthPoints;
+  private final int defensePoints;
 
   protected AbstractCharacter(@NotNull BlockingQueue<ICharacter> turnsQueue,
-                              @NotNull java.lang.String name, String characterClass, double healthPoints) {
+                              @NotNull java.lang.String name, String characterClass, double healthPoints, int defensePoints) {
     this.turnsQueue = turnsQueue;
     this.name = name;
     this.characterClass = characterClass;
     this.healthPoints = healthPoints;
+    this.defensePoints = defensePoints;
   }
 
   @Override
@@ -60,10 +63,25 @@ public abstract class AbstractCharacter implements ICharacter {
 
   @Override
   public void equip(IWeapon weapon) {
-    if (this instanceof PlayerCharacter) {
+    if ((this instanceof PlayerCharacter)&&(this.getHealthPoints()>0)) {
       this.equippedWeapon = weapon;
     }
   }
+
+  @Override
+  public void equipStaff(Staff weapon){}
+
+  @Override
+  public void equipAxe(Axe weapon){}
+
+  @Override
+  public void equipBow(Bow weapon){}
+
+  @Override
+  public void equipKnife(Knife weapon){}
+
+  @Override
+  public void equipSword(Sword weapon){}
 
   @Override
   public IWeapon getEquippedWeapon() {
@@ -79,5 +97,13 @@ public abstract class AbstractCharacter implements ICharacter {
   public double getHealthPoints() {return healthPoints;}
 
   @Override
-  public void setHealthPoints(double value) {this.healthPoints= this.healthPoints + value;}
+  public void setHealthPoints(double value) {this.healthPoints = this.healthPoints - value;}
+
+  public void attack(ICharacter character){
+    if (this.getHealthPoints()>0) {
+      getEquippedWeapon().attack(character);
+    }
+  }
+
+  public int getDefensePoints(){return this.defensePoints;}
 }

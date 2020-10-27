@@ -10,17 +10,18 @@ public class Engineer extends PlayerCharacter {
     public Engineer(final java.lang.String name,
                      final BlockingQueue<ICharacter> turnsQueue,
                      final String characterClass){
-        super(name, turnsQueue, characterClass, 600);
+        super(name, turnsQueue, characterClass, 600, 3);
         this.defensePoints = 150;
     }
     public void equip(IWeapon weapon) {
         weapon.equip(this);
-        super.equip(weapon);
     }
-    //public void equip(IWeapon weapon) throws Exception {
-        //if (!(weapon instanceof Axe | weapon instanceof Bow)){
-            //throw new Exception("Can't equip that type of weapon");
-        //}
-        //super.equip(weapon);
-    //}
+
+
+    @Override
+    public void equipAxe(Axe axe){super.equip(axe);}
+
+    @Override
+    public void equipBow(Bow bow){super.equip(bow);}
+
 }
