@@ -39,7 +39,9 @@ public class Enemy extends AbstractCharacter {
 
   @Override
   public void attack(ICharacter character) {
-    character.setHealthPoints(20);
+    if (character.getHealthPoints()>0) {
+      character.setHealthPoints(20);
+    }
   }
 
   @Override

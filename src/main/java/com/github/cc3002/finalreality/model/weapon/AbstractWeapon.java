@@ -61,7 +61,9 @@ public abstract class AbstractWeapon implements IWeapon {
 
     @Override
     public void attack(ICharacter enemy) {
-        int damage = this.damage - enemy.getDefensePoints();
-        enemy.setHealthPoints(damage);
+        if (enemy.getHealthPoints()>0) {
+            int damage = this.damage - enemy.getDefensePoints();
+            enemy.setHealthPoints(damage);
+        }
     }
     }

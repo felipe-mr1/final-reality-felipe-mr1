@@ -99,7 +99,11 @@ public abstract class AbstractCharacter implements ICharacter {
   @Override
   public void setHealthPoints(double value) {this.healthPoints = this.healthPoints - value;}
 
-  public void attack(ICharacter character){getEquippedWeapon().attack(character);}
+  public void attack(ICharacter character){
+    if (this.getHealthPoints()>0) {
+      getEquippedWeapon().attack(character);
+    }
+  }
 
   public int getDefensePoints(){return this.defensePoints;}
 }
