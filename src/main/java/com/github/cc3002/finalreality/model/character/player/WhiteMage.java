@@ -22,18 +22,4 @@ public class WhiteMage extends PlayerCharacter {
     @Override
     public void equipStaff(Staff staff){super.equip(staff);}
 
-
-    //public double heal(){
-        //assert this.mana > 15;
-        //this.mana -= 15;
-        //return 0.3;
-    //}
-    //public void poison(){
-        //assert this.mana > 40;
-        //this.mana -= 40;
-    //}
-    //public void paralyze(){
-        //assert this.mana > 30;
-        //this.mana -= 30;
-    //}
 }

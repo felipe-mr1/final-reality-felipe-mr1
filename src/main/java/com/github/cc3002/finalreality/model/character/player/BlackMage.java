@@ -28,20 +28,4 @@ public class BlackMage extends PlayerCharacter {
     @Override
     public void equipKnife(Knife knife) {super.equip(knife);}
 
-
-
-
-    // have to add the effect of thunder
-    //public void thunder(ICharacter character){
-        //assert this.mana>15;
-        //this.mana -= 15;
-        //double damage = this.getEquippedWeapon().getDamage();
-        //character.setHealthPoints(damage);
-    //}
-    // have to add effect of fire
-    //public int fire(ICharacter character){
-        //assert this.mana>15;
-        //this.mana -= 15;
-        //return this.getEquippedWeapon().getMagicDamage();
-    //}
 }

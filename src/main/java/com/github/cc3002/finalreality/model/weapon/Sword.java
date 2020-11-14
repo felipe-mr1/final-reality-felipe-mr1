@@ -10,11 +10,4 @@ public class Sword extends AbstractWeapon {
 
     @Override
     public void equip(ICharacter character) {character.equipSword(this);}
-        //if ((character.getCharacterClass().equals("Thief"))||(character.getCharacterClass().equals("Knight"))){
-            //character.equipSword(this);
-        //} else {
-            //int k= 0;
-            //k++;
-        //}
-    //}
 }

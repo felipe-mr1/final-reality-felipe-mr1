@@ -10,8 +10,4 @@ public class Bow extends AbstractWeapon {
 
     @Override
     public void equip(ICharacter character) {character.equipBow(this);}
-        //if((character.getCharacterClass().equals("Engineer"))||(character.getCharacterClass().equals("Thief"))){
-            //character.equipBow(this);
-        //}
-    //}
 }

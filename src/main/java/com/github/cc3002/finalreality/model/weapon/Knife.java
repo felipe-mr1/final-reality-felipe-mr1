@@ -10,8 +10,4 @@ public class Knife extends AbstractWeapon {
 
     @Override
     public void equip(ICharacter character) {character.equipKnife(this);}
-        //if ((character.getCharacterClass().equals("Knight"))||(character.getCharacterClass().equals("Black Mage"))){
-            //character.equipKnife(this);
-        //}
-    //}
 }
