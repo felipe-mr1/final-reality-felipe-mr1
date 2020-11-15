@@ -10,10 +10,10 @@ import com.github.cc3002.finalreality.model.character.player.IPlayer;
 public interface IWeapon {
     /**
      *
-     * @param weapon
+     * @param weapon of the player
      * @return True if these two weapons are the same.
      */
-    boolean equals(IWeapon weapon);
+    boolean equals(Object weapon);
 
     /**
      *
@@ -39,11 +39,6 @@ public interface IWeapon {
      */
     int getWeight();
 
-    /**
-     *
-     * @return the type of the weapon
-     */
-    String getType();
 
     /**
      *

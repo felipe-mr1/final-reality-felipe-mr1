@@ -8,7 +8,6 @@ import com.github.cc3002.finalreality.model.weapon.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -69,8 +68,8 @@ class PlayerCharacterTest extends AbstractCharacterTest  {
     Enemy enemy = new Enemy("Enemy", 10, turns);
     assertNotEquals(BM_Vivi, enemy);
     assertNotEquals(BM_Vivi, K_Adelbert);
-    assertFalse(BM_Vivi.equals(K_Adelbert));
-    assertFalse(BM_Vivi.equals(BM_Perrito));
+    assertNotEquals(K_Adelbert, BM_Vivi);
+    assertNotEquals(BM_Perrito, BM_Vivi);
     assertEquals("Vivi", BM_Vivi.getName());
     assertNotEquals(BM_Vivi.hashCode(), K_Adelbert.hashCode());
   }

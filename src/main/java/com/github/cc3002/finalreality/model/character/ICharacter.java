@@ -44,7 +44,6 @@ public interface ICharacter {
 
   void equip(IWeapon weapon);
 
-
   void attack(ICharacter character);
 
   int getDefensePoints();

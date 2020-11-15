@@ -47,17 +47,17 @@ class WeaponTest {
     var expectedKnife = new Knife(KNIFE_NAME, DAMAGE, SPEED, "Knife");
     var expectedKnife2= new Knife("Knife2",15, 10, "Knife");
 
-    assertTrue(testAxe.equals(expectedAxe));
-    assertTrue(testStaff.equals(expectedStaff));
-    assertTrue(testSword.equals(expectedSword));
-    assertTrue(testBow.equals(expectedBow));
-    assertTrue(testKnife.equals(expectedKnife));
-    assertFalse(testAxe.equals(expectedBow));
-    assertFalse(testStaff.equals(expectedAxe));
-    assertFalse(testSword.equals(expectedAxe));
-    assertFalse(testBow.equals(expectedAxe));
-    assertFalse(testKnife.equals(expectedAxe));
-    assertFalse(testKnife.equals(expectedKnife2));
+    assertEquals(expectedAxe, testAxe);
+    assertEquals(expectedStaff, testStaff);
+    assertEquals(expectedSword, testSword);
+    assertEquals(expectedBow, testBow);
+    assertEquals(expectedKnife, testKnife);
+    assertNotEquals(expectedBow, testAxe);
+    assertNotEquals(expectedAxe, testStaff);
+    assertNotEquals(expectedAxe, testSword);
+    assertNotEquals(expectedAxe, testBow);
+    assertNotEquals(expectedAxe, testKnife);
+    assertNotEquals(expectedKnife2, testKnife);
   }
 
   /**
