@@ -8,6 +8,8 @@ import com.github.cc3002.finalreality.model.weapon.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.concurrent.LinkedBlockingQueue;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -15,9 +17,9 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author Ignacio Slater Muñoz.
  * @author <Your name>
- * @see PlayerCharacter
+ * @see AbstractPlayerCharacter
  */
-class PlayerCharacterTest extends AbstractCharacterTest {
+class PlayerCharacterTest extends AbstractCharacterTest  {
 
   BlackMage BM_Vivi;
   Knight K_Adelbert;
@@ -38,6 +40,7 @@ class PlayerCharacterTest extends AbstractCharacterTest {
    */
   @BeforeEach
   void setUp() {
+    turns = new LinkedBlockingQueue<>();
     super.basicSetUp();
     BM_Vivi = new BlackMage("Vivi", turns, "Black Mage");
     BM_Perrito = new BlackMage("Perrito", turns, "Black Mage");
@@ -46,10 +49,10 @@ class PlayerCharacterTest extends AbstractCharacterTest {
     E_Cid = new Engineer("Cid", turns, "Engineer");
     T_Zidane = new Thief("Zidane", turns, "Thief");
     testCharacters.add(BM_Vivi);
-    testCharacters.add(K_Adelbert);
-    testCharacters.add(WM_Eiko);
-    testCharacters.add(E_Cid);
-    testCharacters.add(T_Zidane);
+    //testCharacters.add(K_Adelbert);
+    //testCharacters.add(WM_Eiko);
+    //testCharacters.add(E_Cid);
+    //testCharacters.add(T_Zidane);
     testAxe = new Axe("Axe", 15, 10, "Axe");
     testStaff = new Staff("Staff", 5, 15, "Staff",20);
     testSword = new Sword("Sword", 15, 10, "Sword");
@@ -65,8 +68,8 @@ class PlayerCharacterTest extends AbstractCharacterTest {
     Enemy enemy = new Enemy("Enemy", 10, turns);
     assertNotEquals(BM_Vivi, enemy);
     assertNotEquals(BM_Vivi, K_Adelbert);
-    assertFalse(BM_Vivi.equals(K_Adelbert));
-    assertFalse(BM_Vivi.equals(BM_Perrito));
+    assertNotEquals(K_Adelbert, BM_Vivi);
+    assertNotEquals(BM_Perrito, BM_Vivi);
     assertEquals("Vivi", BM_Vivi.getName());
     assertNotEquals(BM_Vivi.hashCode(), K_Adelbert.hashCode());
   }

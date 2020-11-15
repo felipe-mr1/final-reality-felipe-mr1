@@ -1,6 +1,7 @@
 package com.github.cc3002.finalreality.model.weapon;
 
 import com.github.cc3002.finalreality.model.character.ICharacter;
+import com.github.cc3002.finalreality.model.character.player.IPlayer;
 
 /**
  * This represents a weapon from the game.
@@ -9,10 +10,10 @@ import com.github.cc3002.finalreality.model.character.ICharacter;
 public interface IWeapon {
     /**
      *
-     * @param weapon
+     * @param weapon of the player
      * @return True if these two weapons are the same.
      */
-    boolean equals(IWeapon weapon);
+    boolean equals(Object weapon);
 
     /**
      *
@@ -38,11 +39,6 @@ public interface IWeapon {
      */
     int getWeight();
 
-    /**
-     *
-     * @return the type of the weapon
-     */
-    String getType();
 
     /**
      *
@@ -51,7 +47,7 @@ public interface IWeapon {
      *
      * Checks if the character can equip the weapon.
      */
-    void equip(ICharacter character);
+    void equip(IPlayer character);
 
     void attack(ICharacter enemy);
 

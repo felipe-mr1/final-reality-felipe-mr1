@@ -1,6 +1,6 @@
 package com.github.cc3002.finalreality.model.weapon;
 
-import com.github.cc3002.finalreality.model.character.ICharacter;
+import com.github.cc3002.finalreality.model.character.player.IPlayer;
 
 public class Axe extends AbstractWeapon {
     public Axe(final String name, final int damage, final int weight,
@@ -9,9 +9,5 @@ public class Axe extends AbstractWeapon {
     }
 
     @Override
-    public void equip(ICharacter character) {character.equipAxe(this);}
-        //if ((character.getCharacterClass().equals("Engineer"))||(character.getCharacterClass().equals("Knight"))){
-            //character.equipAxe(this);
-        //}
-    //}
+    public void equip(IPlayer character) {character.equipAxe(this);}
 }

@@ -25,12 +25,21 @@ public abstract class AbstractWeapon implements IWeapon {
     }
 
     @Override
-    public boolean equals(IWeapon weapon){
-        return (this.name.equals(weapon.getName())) && (this.type.equals(weapon.getType()));
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof AbstractWeapon)) return false;
+        AbstractWeapon that = (AbstractWeapon) o;
+        return damage == that.damage &&
+                weight == that.weight &&
+                magicDamage == that.magicDamage &&
+                name.equals(that.name) &&
+                type.equals(that.type);
     }
 
     @Override
-    public int hashCode() {return Objects.hash(this.name) + Objects.hash(this.type);}
+    public int hashCode() {
+        return Objects.hash(name, damage, weight, type, magicDamage);
+    }
 
     @Override
     public String getName() {
@@ -50,14 +59,7 @@ public abstract class AbstractWeapon implements IWeapon {
         return weight;
     }
 
-    @Override
-    public String getType() {
-        return type;
-    }
 
-
-    @Override
-    public void equip(ICharacter character) {character.equip(this);}
 
     @Override
     public void attack(ICharacter enemy) {
