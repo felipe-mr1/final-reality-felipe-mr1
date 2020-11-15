@@ -7,7 +7,7 @@ import com.github.cc3002.finalreality.model.weapon.Staff;
 
 import java.util.concurrent.BlockingQueue;
 
-public class BlackMage extends PlayerCharacter {
+public class BlackMage extends AbstractPlayerCharacter {
 
     int mana;
     public BlackMage(final java.lang.String name,

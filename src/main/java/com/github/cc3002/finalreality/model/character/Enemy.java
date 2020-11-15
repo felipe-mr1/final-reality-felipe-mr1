@@ -2,8 +2,10 @@ package com.github.cc3002.finalreality.model.character;
 
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
-import com.github.cc3002.finalreality.model.weapon.IWeapon;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -15,6 +17,7 @@ import org.jetbrains.annotations.NotNull;
 public class Enemy extends AbstractCharacter {
 
   private final int weight;
+  protected ScheduledExecutorService scheduledExecutor;
 
 
   /**
@@ -27,15 +30,19 @@ public class Enemy extends AbstractCharacter {
     this.weight = weight;
   }
 
+  @Override
+  public void waitTurn() {
+    scheduledExecutor = Executors.newSingleThreadScheduledExecutor();
+    scheduledExecutor
+            .schedule(this::addToQueue, this.getWeight() / 10, TimeUnit.SECONDS);
+  }
+
   /**
    * Returns the weight of this enemy.
    */
   public int getWeight() {
     return weight;
   }
-
-  @Override
-  public void equip(IWeapon weapon){weapon.equip(this);}
 
   @Override
   public void attack(ICharacter character) {

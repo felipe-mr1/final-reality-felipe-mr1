@@ -22,15 +22,6 @@ public interface ICharacter {
    */
   java.lang.String getName();
 
-  /**
-   * Equips a weapon to the character.
-   */
-  void equip(IWeapon weapon);
-
-  /**
-   * Return this character's equipped weapon.
-   */
-  IWeapon getEquippedWeapon();
 
   /**
    * Returns this character's class.
@@ -51,16 +42,8 @@ public interface ICharacter {
    */
   void setHealthPoints(double value);
 
+  void equip(IWeapon weapon);
 
-  void equipStaff(Staff staff);
-
-  void equipAxe(Axe axe);
-
-  void equipBow(Bow bow);
-
-  void equipKnife(Knife knife);
-
-  void equipSword(Sword sword);
 
   void attack(ICharacter character);
 

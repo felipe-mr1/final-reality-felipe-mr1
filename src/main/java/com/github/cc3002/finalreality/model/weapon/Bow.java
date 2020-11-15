@@ -1,6 +1,6 @@
 package com.github.cc3002.finalreality.model.weapon;
 
-import com.github.cc3002.finalreality.model.character.ICharacter;
+import com.github.cc3002.finalreality.model.character.player.IPlayer;
 
 public class Bow extends AbstractWeapon {
     public Bow(final String name, final int damage, final int weight,
@@ -9,5 +9,5 @@ public class Bow extends AbstractWeapon {
     }
 
     @Override
-    public void equip(ICharacter character) {character.equipBow(this);}
+    public void equip(IPlayer character) {character.equipBow(this);}
 }

@@ -1,6 +1,7 @@
 package com.github.cc3002.finalreality.model.weapon;
 
 import com.github.cc3002.finalreality.model.character.ICharacter;
+import com.github.cc3002.finalreality.model.character.player.IPlayer;
 
 /**
  * This represents a weapon from the game.
@@ -51,7 +52,7 @@ public interface IWeapon {
      *
      * Checks if the character can equip the weapon.
      */
-    void equip(ICharacter character);
+    void equip(IPlayer character);
 
     void attack(ICharacter enemy);
 

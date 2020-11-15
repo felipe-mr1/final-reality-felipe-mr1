@@ -1,6 +1,6 @@
 package com.github.cc3002.finalreality.model.character;
 
-import com.github.cc3002.finalreality.model.character.player.PlayerCharacter;
+import com.github.cc3002.finalreality.model.character.player.AbstractPlayerCharacter;
 import com.github.cc3002.finalreality.model.weapon.*;
 
 import java.util.concurrent.BlockingQueue;
@@ -21,8 +21,7 @@ public abstract class AbstractCharacter implements ICharacter {
   protected final BlockingQueue<ICharacter> turnsQueue;
   protected final java.lang.String name;
   private final String characterClass;
-  private IWeapon equippedWeapon = null;
-  private ScheduledExecutorService scheduledExecutor;
+  protected ScheduledExecutorService scheduledExecutor;
   private double healthPoints;
   private final int defensePoints;
 
@@ -35,23 +34,11 @@ public abstract class AbstractCharacter implements ICharacter {
     this.defensePoints = defensePoints;
   }
 
-  @Override
-  public void waitTurn() {
-    scheduledExecutor = Executors.newSingleThreadScheduledExecutor();
-    if (this instanceof PlayerCharacter) {
-      scheduledExecutor
-          .schedule(this::addToQueue, equippedWeapon.getWeight() / 10, TimeUnit.SECONDS);
-    } else {
-      var enemy = (Enemy) this;
-      scheduledExecutor
-          .schedule(this::addToQueue, enemy.getWeight() / 10, TimeUnit.SECONDS);
-    }
-  }
 
   /**
    * Adds this character to the turns queue.
    */
-  private void addToQueue() {
+  protected void addToQueue() {
     turnsQueue.add(this);
     scheduledExecutor.shutdown();
   }
@@ -61,32 +48,8 @@ public abstract class AbstractCharacter implements ICharacter {
     return name;
   }
 
-  @Override
-  public void equip(IWeapon weapon) {
-    if ((this instanceof PlayerCharacter)&&(this.getHealthPoints()>0)) {
-      this.equippedWeapon = weapon;
-    }
-  }
+  public void equip(IWeapon weapon){}
 
-  @Override
-  public void equipStaff(Staff weapon){}
-
-  @Override
-  public void equipAxe(Axe weapon){}
-
-  @Override
-  public void equipBow(Bow weapon){}
-
-  @Override
-  public void equipKnife(Knife weapon){}
-
-  @Override
-  public void equipSword(Sword weapon){}
-
-  @Override
-  public IWeapon getEquippedWeapon() {
-    return equippedWeapon;
-  }
 
   @Override
   public String getCharacterClass() {
@@ -99,11 +62,6 @@ public abstract class AbstractCharacter implements ICharacter {
   @Override
   public void setHealthPoints(double value) {this.healthPoints = this.healthPoints - value;}
 
-  public void attack(ICharacter character){
-    if (this.getHealthPoints()>0) {
-      getEquippedWeapon().attack(character);
-    }
-  }
 
   public int getDefensePoints(){return this.defensePoints;}
 }

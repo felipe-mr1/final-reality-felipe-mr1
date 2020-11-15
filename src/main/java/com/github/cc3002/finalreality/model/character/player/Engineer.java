@@ -5,7 +5,7 @@ import com.github.cc3002.finalreality.model.weapon.*;
 
 import java.util.concurrent.BlockingQueue;
 
-public class Engineer extends PlayerCharacter {
+public class Engineer extends AbstractPlayerCharacter {
     int defensePoints;
     public Engineer(final java.lang.String name,
                      final BlockingQueue<ICharacter> turnsQueue,

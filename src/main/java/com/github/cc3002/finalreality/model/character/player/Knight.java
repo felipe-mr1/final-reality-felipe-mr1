@@ -5,7 +5,7 @@ import com.github.cc3002.finalreality.model.weapon.*;
 
 import java.util.concurrent.BlockingQueue;
 
-public class Knight extends PlayerCharacter {
+public class Knight extends AbstractPlayerCharacter {
     public Knight(final java.lang.String name,
                     final BlockingQueue<ICharacter> turnsQueue,
                     final String characterClass){

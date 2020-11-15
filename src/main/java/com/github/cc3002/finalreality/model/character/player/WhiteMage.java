@@ -6,7 +6,7 @@ import com.github.cc3002.finalreality.model.weapon.Staff;
 
 import java.util.concurrent.BlockingQueue;
 
-public class WhiteMage extends PlayerCharacter {
+public class WhiteMage extends AbstractPlayerCharacter {
     double mana;
     public WhiteMage(final java.lang.String name,
                      final BlockingQueue<ICharacter> turnsQueue,

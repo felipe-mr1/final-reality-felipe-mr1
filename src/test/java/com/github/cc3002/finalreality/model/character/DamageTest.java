@@ -4,9 +4,13 @@ import com.github.cc3002.finalreality.model.character.player.*;
 import com.github.cc3002.finalreality.model.weapon.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-public class DamageTest extends AbstractCharacterTest{
+public class DamageTest{
     BlackMage BM_Vivi;
     Knight K_Adelbert;
     WhiteMage WM_Eiko;
@@ -18,12 +22,14 @@ public class DamageTest extends AbstractCharacterTest{
     Axe testAxe;
     Bow testBow;
     Knife testKnife;
+    protected BlockingQueue<ICharacter> turns;
 
     @BeforeEach
     void setUp(){
-        super.basicSetUp();
+        turns = new LinkedBlockingQueue<>();
+        //super.basicSetUp();
         BM_Vivi = new BlackMage("Vivi", turns, "Black Mage");
-        testCharacters.add(BM_Vivi);
+        //testCharacters.add(BM_Vivi);
         K_Adelbert = new Knight("Adelbert", turns, "Knight");
         WM_Eiko = new WhiteMage("Eiko", turns, "White Mage");
         E_Cid = new Engineer("Cid", turns, "Engineer");
