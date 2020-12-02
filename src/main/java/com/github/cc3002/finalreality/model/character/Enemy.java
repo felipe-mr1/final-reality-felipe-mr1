@@ -1,6 +1,7 @@
 package com.github.cc3002.finalreality.model.character;
 
 import java.util.Objects;
+import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -46,6 +47,7 @@ public class Enemy extends AbstractCharacter {
 
   @Override
   public void attack(ICharacter character) {
+    Random rng = new Random();
     if (character.getHealthPoints()>0) {
       character.setHealthPoints(20);
     }

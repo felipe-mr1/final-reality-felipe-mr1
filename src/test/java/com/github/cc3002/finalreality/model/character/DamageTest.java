@@ -28,12 +28,12 @@ public class DamageTest{
     void setUp(){
         turns = new LinkedBlockingQueue<>();
         //super.basicSetUp();
-        BM_Vivi = new BlackMage("Vivi", turns, "Black Mage");
+        BM_Vivi = new BlackMage("Vivi", turns);
         //testCharacters.add(BM_Vivi);
-        K_Adelbert = new Knight("Adelbert", turns, "Knight");
-        WM_Eiko = new WhiteMage("Eiko", turns, "White Mage");
-        E_Cid = new Engineer("Cid", turns, "Engineer");
-        T_Zidane = new Thief("Zidane", turns, "Thief");
+        K_Adelbert = new Knight("Adelbert", turns);
+        WM_Eiko = new WhiteMage("Eiko", turns);
+        E_Cid = new Engineer("Cid", turns);
+        T_Zidane = new Thief("Zidane", turns);
         Goblin = new Enemy("Goblin", 15, turns);
         testAxe = new Axe("Axe", 15, 10, "Axe");
         testStaff = new Staff("Staff", 5, 15, "Staff",20);

@@ -2,10 +2,11 @@ package com.github.cc3002.finalreality.model.character.player;
 
 import com.github.cc3002.finalreality.model.character.AbstractCharacter;
 import com.github.cc3002.finalreality.model.character.ICharacter;
+
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import com.github.cc3002.finalreality.model.weapon.*;
@@ -20,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
 public abstract class AbstractPlayerCharacter extends AbstractCharacter implements com.github.cc3002.finalreality.model.character.player.IPlayer {
 
   protected IWeapon equippedWeapon = null;
-  //private ScheduledExecutorService scheduledExecutor;
+  protected ArrayList<IWeapon> weapons = new ArrayList();
 
 
   /**
@@ -53,6 +54,7 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
   public void equip(IWeapon weapon){
     if (getHealthPoints() >0){
       this.equippedWeapon = weapon;
+      this.inventory(weapon);
     }
   }
   @Override
@@ -75,6 +77,10 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
     if (this.getHealthPoints()>0) {
       getEquippedWeapon().attack(character);
     }
+  }
+
+  public void inventory(IWeapon weapon){
+    weapons.add(weapon);
   }
 
   @Override

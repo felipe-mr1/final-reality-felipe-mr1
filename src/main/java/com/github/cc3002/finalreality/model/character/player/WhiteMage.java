@@ -9,9 +9,8 @@ import java.util.concurrent.BlockingQueue;
 public class WhiteMage extends AbstractPlayerCharacter {
     double mana;
     public WhiteMage(final java.lang.String name,
-                     final BlockingQueue<ICharacter> turnsQueue,
-                     final String characterClass) {
-        super(name, turnsQueue, characterClass, 500, 1);
+                     final BlockingQueue<ICharacter> turnsQueue) {
+        super(name, turnsQueue, "White Mage", 500, 1);
         this.mana = 200;
     }
 

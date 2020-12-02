@@ -51,4 +51,5 @@ public interface IWeapon {
 
     void attack(ICharacter enemy);
 
+    String getType();
 }

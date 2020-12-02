@@ -4,7 +4,12 @@ import com.github.cc3002.finalreality.model.weapon.*;
 
 public interface IPlayer {
 
-
+    /**
+     *
+     * @param weapon to equip
+     * Sends a message to equip the given weapon
+     * to the Character
+     */
     void equip(IWeapon weapon);
 
     IWeapon getEquippedWeapon();
@@ -19,5 +24,5 @@ public interface IPlayer {
 
     void equipSword(Sword sword);
 
-
+    void inventory(IWeapon weapon);
 }
