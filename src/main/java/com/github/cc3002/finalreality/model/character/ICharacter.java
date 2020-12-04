@@ -42,9 +42,22 @@ public interface ICharacter {
    */
   void setHealthPoints(double value);
 
+  /**
+   * Sends a message to equip a weapon
+   * @param weapon
+   */
   void equip(IWeapon weapon);
 
+  /**
+   * Sends a message to attack a given character.
+   * This character can be a player or an enemy
+   * @param character
+   */
   void attack(ICharacter character);
 
+  /**
+   * Gets the defense points of this character
+   * @return defense points
+   */
   int getDefensePoints();
 }

@@ -47,10 +47,12 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
             .schedule(this::addToQueue, equippedWeapon.getWeight() / 10, TimeUnit.SECONDS);
   }
 
+  @Override
   public IWeapon getEquippedWeapon(){
     return equippedWeapon;
   }
 
+  @Override
   public void equip(IWeapon weapon){
     if (getHealthPoints() >0){
       this.equippedWeapon = weapon;
@@ -79,6 +81,7 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
     }
   }
 
+  @Override
   public void inventory(IWeapon weapon){
     weapons.add(weapon);
   }

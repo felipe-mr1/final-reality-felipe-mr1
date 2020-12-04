@@ -1,4 +1,4 @@
-package com.github.cc3002.finalreality.model.Client;
+/*package com.github.cc3002.finalreality.model.Client;
 
 import com.github.cc3002.finalreality.model.character.Enemy;
 import com.github.cc3002.finalreality.model.character.ICharacter;
@@ -105,7 +105,7 @@ public class GameFactory {
     public boolean playersDead(){
         int i = players.size();
         int k = 0;
-        for (int j = 0; j < i -1; j++){
+        for (int j = 0; j < i; j++){
             if (players.get(j).getHealthPoints() <= 0){
                 k++;
             }
@@ -116,7 +116,7 @@ public class GameFactory {
     public boolean enemiesDead(){
         int i = enemies.size();
         int k = 0;
-        for (int j = 0; j < i -1; j++){
+        for (int j = 0; j < i; j++){
             if (enemies.get(j).getHealthPoints() <= 0){
                 k++;
             }
@@ -144,7 +144,7 @@ public class GameFactory {
 
     public ICharacter getRandomTarget(){
         Random rng = new Random();
-        int i = rng.nextInt(5);
+        int i = rng.nextInt(4);
         return players.get(i);
     }
 
@@ -156,4 +156,4 @@ public class GameFactory {
         }
         return null;
     }
-}
+}*/
