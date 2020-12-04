@@ -49,6 +49,16 @@ public interface IWeapon {
      */
     void equip(IPlayer character);
 
-    void attack(ICharacter enemy);
+    /**
+     * Sends a message to readjust the health points
+     * of a character
+     * @param target
+     */
+    void attack(ICharacter target);
 
+    /**
+     * Used to get the type of the weapon
+     * @return type of the weapon
+     */
+    String getType();
 }

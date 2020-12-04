@@ -1,12 +1,9 @@
 package com.github.cc3002.finalreality.model.character;
 
-import com.github.cc3002.finalreality.model.character.player.AbstractPlayerCharacter;
 import com.github.cc3002.finalreality.model.weapon.*;
 
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -60,7 +57,12 @@ public abstract class AbstractCharacter implements ICharacter {
   public double getHealthPoints() {return healthPoints;}
 
   @Override
-  public void setHealthPoints(double value) {this.healthPoints = this.healthPoints - value;}
+  public void setHealthPoints(double value) {
+    this.healthPoints = this.healthPoints - value;
+    if (this.healthPoints < 0){
+      this.healthPoints = 0;
+    }
+  }
 
 
   public int getDefensePoints(){return this.defensePoints;}

@@ -7,9 +7,8 @@ import java.util.concurrent.BlockingQueue;
 
 public class Knight extends AbstractPlayerCharacter {
     public Knight(final java.lang.String name,
-                    final BlockingQueue<ICharacter> turnsQueue,
-                    final String characterClass){
-        super(name, turnsQueue, characterClass, 800, 5);
+                    final BlockingQueue<ICharacter> turnsQueue){
+        super(name, turnsQueue, "Knight", 800, 5);
     }
     public void equip(IWeapon weapon) {
         weapon.equip(this);

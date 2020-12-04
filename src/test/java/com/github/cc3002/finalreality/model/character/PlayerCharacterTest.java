@@ -42,12 +42,12 @@ class PlayerCharacterTest extends AbstractCharacterTest  {
   void setUp() {
     turns = new LinkedBlockingQueue<>();
     super.basicSetUp();
-    BM_Vivi = new BlackMage("Vivi", turns, "Black Mage");
-    BM_Perrito = new BlackMage("Perrito", turns, "Black Mage");
-    K_Adelbert = new Knight("Adelbert", turns, "Knight");
-    WM_Eiko = new WhiteMage("Eiko", turns, "White Mage");
-    E_Cid = new Engineer("Cid", turns, "Engineer");
-    T_Zidane = new Thief("Zidane", turns, "Thief");
+    BM_Vivi = new BlackMage("Vivi", turns);
+    BM_Perrito = new BlackMage("Perrito", turns);
+    K_Adelbert = new Knight("Adelbert", turns);
+    WM_Eiko = new WhiteMage("Eiko", turns);
+    E_Cid = new Engineer("Cid", turns);
+    T_Zidane = new Thief("Zidane", turns);
     testCharacters.add(BM_Vivi);
     //testCharacters.add(K_Adelbert);
     //testCharacters.add(WM_Eiko);

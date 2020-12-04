@@ -8,9 +8,8 @@ import java.util.concurrent.BlockingQueue;
 public class Engineer extends AbstractPlayerCharacter {
     int defensePoints;
     public Engineer(final java.lang.String name,
-                     final BlockingQueue<ICharacter> turnsQueue,
-                     final String characterClass){
-        super(name, turnsQueue, characterClass, 600, 3);
+                     final BlockingQueue<ICharacter> turnsQueue){
+        super(name, turnsQueue, "Engineer", 600, 3);
         this.defensePoints = 150;
     }
     public void equip(IWeapon weapon) {

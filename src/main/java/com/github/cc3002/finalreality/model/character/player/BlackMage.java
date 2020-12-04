@@ -11,9 +11,8 @@ public class BlackMage extends AbstractPlayerCharacter {
 
     int mana;
     public BlackMage(final java.lang.String name,
-                     final BlockingQueue<ICharacter> turnsQueue,
-                     final String characterClass){
-        super(name, turnsQueue, characterClass, 500, 2);
+                     final BlockingQueue<ICharacter> turnsQueue){
+        super(name, turnsQueue, "Black Mage", 500, 2);
         this.mana = 200;
     }
 

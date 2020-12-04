@@ -59,7 +59,7 @@ public abstract class AbstractWeapon implements IWeapon {
         return weight;
     }
 
-
+    public String getType() {return type;}
 
     @Override
     public void attack(ICharacter enemy) {
