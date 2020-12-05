@@ -23,7 +23,7 @@ sean subclases de una clase abstracta la cual comprende aquellos comportamientos
 personajes y clases es posible notar que estas comparten un conjunto de acciones y solo se diferencian en
 algunos puntos, por ejemplo, el uso de magias.
 
-Es así como cada clase de personaje es una subclase de 'Player Character', la cual contiene los metedos 'equals',
+Es así como cada clase de personaje es una subclase de 'Abstract Player Character', la cual contiene los metedos 'equals',
 'hashcode' y 'equip', y esta es subclase de 'Abstract Character'. Un aspecto a considerar fue que si bien tanto enemigos como
 personajes comparten ciertos metodos, existen ciertas diferencias como que los enemigos no pueden equipar armas y, también, da
 lugar a la idea a que pueden existir otras diferencias por lo que la clase 'Enemies' es directamente subclase de
@@ -33,3 +33,13 @@ Para el paquete 'Weapons' se sigue la misma idea, donde tenemos una clase para c
 Esto se hace con la idea de que si a futuro tienen atributos especificos para cada tipo solo es necesario escribir
 codigo y no modificar lo que ya esta escrito. Esto tambien se hace con el objeto de verificar si un personaje
 en particular puede equipar un cierto tipo de arma.
+
+---
+
+Controlador
+
+Para esta etapa se implementa el controlador el cual es el intermediario entre el usuario y los objetos del modelo. El controlador
+contiene los metodos que permiten que los objetos interactuen entre sí. Cuenta con los métodos getters con el fin de que el usuario
+pueda conocer en todo momento datos como la vida de los personajes, enemigos, armas en el inventario, entre otos. Por otra parte,
+el controlador permite saber cuando han quedado fuera de juego los personajes del usuario tanto como los enemigos para así mandar un
+mensaje de "Game Over".
