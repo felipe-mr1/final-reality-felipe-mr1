@@ -31,6 +31,7 @@ public class ControllerTest {
         controllerFF.createWeapon("Espada", 30, 62, "Sword", 0);
         controllerFF.createWeapon("Hacha", 35, 57, "Axe", 0);
         controllerFF.createWeapon("Ballesta", 15, 66, "Bow", 0);
+        controllerFF.createWeapon("cuchiullo", 30, 52, "Knife", 0);
         controllerFF.createEnemy("Enemy0", 15);
     }
 
@@ -38,6 +39,7 @@ public class ControllerTest {
     public void controllerConstructorTest(){
         assertEquals("Black Mage", controllerFF.getPlayer("Libano").getCharacterClass());
         assertEquals("Staff", controllerFF.getWeapon("baston").getType());
+        assertEquals("Espada", controllerFF.getWeapon("Espada").getName());
     }
 
     @Test
@@ -48,8 +50,6 @@ public class ControllerTest {
         controllerFF.equip("Bolivia", "Hacha");
         controllerFF.equip("Peru", "Ballesta");
         controllerFF.addToQueue();
-        var expected = controllerFF.getTurn();
-        var actual = controllerFF.getTurn();
         assertNotEquals(controllerFF.getTurn(), controllerFF.getTurn());
     }
 
@@ -83,8 +83,26 @@ public class ControllerTest {
         controllerFF.equip("Bolivia", "Hacha");
         controllerFF.equip("Peru", "Ballesta");
         controllerFF.addToQueue();
-        //var character = controllerFF.getTurn();
         assertFalse(controllerFF.playersDead());
     }
 
+    @Test
+    public void controllerNullTest(){
+        controllerFF.createPlayer("asd", "Whie MAAge");
+        controllerFF.createWeapon("RRRR", 123, 44, "Kifeee", 0);
+        assertNull(controllerFF.getWeapon("RRRR"));
+        assertNull(controllerFF.getPlayer("asd"));
+        assertNull(controllerFF.getEnemy("asdf"));
+    }
+
+    @Test
+    public void controllerPlayersDeadTest(){
+        controllerFF.getPlayer("Libano").setHealthPoints(500);
+        controllerFF.getPlayer("Siberia").setHealthPoints(500);
+        controllerFF.getPlayer("Chile").setHealthPoints(600);
+        controllerFF.getPlayer("Bolivia").setHealthPoints(800);
+        controllerFF.getPlayer("Peru").setHealthPoints(600);
+        assertTrue(controllerFF.playersDead());
+        assertTrue(controllerFF.gameOver());
+    }
 }

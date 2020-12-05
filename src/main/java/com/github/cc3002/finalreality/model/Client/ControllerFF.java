@@ -68,15 +68,17 @@ public class ControllerFF {
 
     public ICharacter getTurn(){
         var character = turns.poll();
-        if (character.getHealthPoints() == 0){
-            return null;
+        try {
+            if (character.getHealthPoints() == 0) {
+                return null;
+            } else if (character.getCharacterClass().equals("Enemy")) {
+                this.enemyTurn(character);
+                return null;
+            } else {
+                return character;
+            }
         }
-        else if (character.getCharacterClass().equals("Enemy")){
-            this.enemyTurn(character);
-            return null;
-        } else {
-            return character;
-        }
+        catch (Exception ignored){return null;}
     }
 
     public void attack(String name, String target){
@@ -97,28 +99,43 @@ public class ControllerFF {
     }
 
     public ICharacter getPlayer(String target){
-        for (ICharacter player : players){
-            if (player.getName().equals(target)){
-                return player;
+        try {
+            for (ICharacter player : players) {
+                if (player.getName().equals(target)) {
+                    return player;
+                }
             }
         }
+        catch (Exception e) {
+            return null;
+        }
+
         return null;
     }
 
     public ICharacter getEnemy(String target){
-        for (ICharacter enemy : enemies){
-            if (enemy.getName().equals(target)){
-                return enemy;
+        try {
+            for (ICharacter enemy : enemies) {
+                if (enemy.getName().equals(target)) {
+                    return enemy;
+                }
             }
         }
+        catch (Exception e) {
+            return null;
+        }
+
         return null;
     }
 
-    public IWeapon getWeapon(String weapon){
-        for (IWeapon w : inventory){
-            if (w.getName().equals(weapon)){
-                return w;
+    public IWeapon getWeapon(String weapon) {
+        try {
+            for (IWeapon w : inventory) {
+                if (w.getName().equals(weapon)) {
+                    return w;
+                }
             }
+        } catch (Exception ignored) {
         }
         return null;
     }

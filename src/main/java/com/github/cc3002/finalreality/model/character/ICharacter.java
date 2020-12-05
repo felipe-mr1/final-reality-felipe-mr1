@@ -44,14 +44,14 @@ public interface ICharacter {
 
   /**
    * Sends a message to equip a weapon
-   * @param weapon
+   * @param weapon to equip
    */
   void equip(IWeapon weapon);
 
   /**
    * Sends a message to attack a given character.
    * This character can be a player or an enemy
-   * @param character
+   * @param character to attack
    */
   void attack(ICharacter character);
 
