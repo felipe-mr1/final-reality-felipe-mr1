@@ -133,5 +133,7 @@ class PlayerCharacterTest extends AbstractCharacterTest  {
     assertEquals(500, BM_Vivi.getHealthPoints());
     BM_Vivi.setHealthPoints(50);
     assertEquals(450,BM_Vivi.getHealthPoints());
+    BM_Vivi.setHealthPoints(500);
+    assertEquals(0, BM_Vivi.getHealthPoints());
   }
 }

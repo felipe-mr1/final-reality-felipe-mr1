@@ -52,7 +52,7 @@ public interface IWeapon {
     /**
      * Sends a message to readjust the health points
      * of a character
-     * @param target
+     * @param target to attack
      */
     void attack(ICharacter target);
 

@@ -64,6 +64,6 @@ public abstract class AbstractCharacter implements ICharacter {
     }
   }
 
-
+  @Override
   public int getDefensePoints(){return this.defensePoints;}
 }
