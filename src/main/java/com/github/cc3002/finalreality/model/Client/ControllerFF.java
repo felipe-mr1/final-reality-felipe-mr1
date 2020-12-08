@@ -1,15 +1,18 @@
 package com.github.cc3002.finalreality.model.Client;
 
+import com.github.cc3002.finalreality.model.character.AbstractCharacter;
 import com.github.cc3002.finalreality.model.character.ICharacter;
 import com.github.cc3002.finalreality.model.weapon.IWeapon;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class ControllerFF {
+public class ControllerFF implements Observer {
     protected GameFactoryFF gameFactoryFF;
     protected BlockingQueue<ICharacter> turns = new LinkedBlockingQueue<>();
     protected ArrayList<ICharacter> players = new ArrayList<>();
@@ -164,5 +167,12 @@ public class ControllerFF {
 
     public boolean gameOver(){
         return this.playersDead() || this.enemiesDead();
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        if (arg instanceof AbstractCharacter){
+            System.out.println(((AbstractCharacter) arg).getName() +" has died");
+        }
     }
 }
