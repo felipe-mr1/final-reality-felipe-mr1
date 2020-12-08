@@ -1,6 +1,7 @@
 package com.github.cc3002.finalreality.model.character;
 
 import java.util.Objects;
+import java.util.Observable;
 import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
@@ -74,4 +75,6 @@ public class Enemy extends AbstractCharacter {
   public int hashCode() {
     return Objects.hash(getWeight());
   }
+
+
 }

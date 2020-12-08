@@ -2,6 +2,8 @@ package com.github.cc3002.finalreality.model.character;
 
 import com.github.cc3002.finalreality.model.weapon.*;
 
+import java.util.Observable;
+import java.util.Observer;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ScheduledExecutorService;
 
@@ -13,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
  * @author Ignacio Slater Muñoz.
  * @author <Your name>
  */
-public abstract class AbstractCharacter implements ICharacter {
+public abstract class AbstractCharacter extends Observable implements ICharacter {
 
   protected final BlockingQueue<ICharacter> turnsQueue;
   protected final java.lang.String name;
@@ -59,8 +61,10 @@ public abstract class AbstractCharacter implements ICharacter {
   @Override
   public void setHealthPoints(double value) {
     this.healthPoints = this.healthPoints - value;
-    if (this.healthPoints < 0){
+    if (this.healthPoints <= 0){
+      setChanged();
       this.healthPoints = 0;
+      notifyObservers(this);
     }
   }
 
