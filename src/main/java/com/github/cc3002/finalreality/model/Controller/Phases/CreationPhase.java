@@ -12,7 +12,7 @@ public class CreationPhase extends Phase {
     }
 
     @Override
-    public void TryToCreatePlayer(String aName, String aClass, String aWeapon, String aWeaponName) throws InvalidActionException {
+    public void tryToCreatePlayer(String aName, String aClass, String aWeapon, String aWeaponName) {
         Random rng = new Random();
         if(controllerFF.partySize() == 4){return;}
         controllerFF.createPlayer(aName, aClass);

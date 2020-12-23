@@ -22,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PlayerCharacterTest extends AbstractCharacterTest  {
 
   BlackMage BM_Vivi;
+  BlackMage BM_Viviana;
   Knight K_Adelbert;
   WhiteMage WM_Eiko;
   Engineer E_Cid;
@@ -43,6 +44,7 @@ class PlayerCharacterTest extends AbstractCharacterTest  {
     turns = new LinkedBlockingQueue<>();
     super.basicSetUp();
     BM_Vivi = new BlackMage("Vivi", turns);
+    BM_Viviana = new BlackMage("Vivi", turns);
     BM_Perrito = new BlackMage("Perrito", turns);
     K_Adelbert = new Knight("Adelbert", turns);
     WM_Eiko = new WhiteMage("Eiko", turns);
@@ -72,6 +74,7 @@ class PlayerCharacterTest extends AbstractCharacterTest  {
     assertNotEquals(BM_Perrito, BM_Vivi);
     assertEquals("Vivi", BM_Vivi.getName());
     assertNotEquals(BM_Vivi.hashCode(), K_Adelbert.hashCode());
+    assertEquals(BM_Vivi, BM_Viviana);
   }
 
   /**

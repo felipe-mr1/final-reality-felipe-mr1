@@ -6,4 +6,9 @@ public class InventoryPhase extends Phase {
     public InventoryPhase(ControllerFF controllerFF) {
         super(controllerFF);
     }
+
+    @Override
+    public void tryToEquip(String aCharacter, String aWeapon){
+        controllerFF.equip(aCharacter, aWeapon);
+    }
 }

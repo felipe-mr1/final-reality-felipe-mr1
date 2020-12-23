@@ -3,7 +3,6 @@ package com.github.cc3002.finalreality.model.character;
 import com.github.cc3002.finalreality.model.weapon.*;
 
 import java.util.Observable;
-import java.util.Observer;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ScheduledExecutorService;
 
@@ -23,6 +22,7 @@ public abstract class AbstractCharacter extends Observable implements ICharacter
   protected ScheduledExecutorService scheduledExecutor;
   private double healthPoints;
   private final int defensePoints;
+  private IWeapon equippedWeapon = null;
 
   protected AbstractCharacter(@NotNull BlockingQueue<ICharacter> turnsQueue,
                               @NotNull java.lang.String name, String characterClass, double healthPoints, int defensePoints) {
@@ -47,7 +47,7 @@ public abstract class AbstractCharacter extends Observable implements ICharacter
     return name;
   }
 
-  public void equip(IWeapon weapon){}
+  public void equip(IWeapon weapon){this.equippedWeapon = weapon;}
 
 
   @Override
@@ -70,4 +70,6 @@ public abstract class AbstractCharacter extends Observable implements ICharacter
 
   @Override
   public int getDefensePoints(){return this.defensePoints;}
+
+  public IWeapon getEquippedWeapon(){return this.equippedWeapon;}
 }

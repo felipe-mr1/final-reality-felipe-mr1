@@ -33,11 +33,16 @@ public class Phase {
         throw new InvalidTransitionException("Cant Change to Equip Phase");
     }
 
-    public void TryToCreatePlayer(String aName, String aClass, String aWeapon, String aWeaponName) throws InvalidActionException{
+    public void tryToCreatePlayer(String aName, String aClass, String aWeapon, String aWeaponName) throws InvalidActionException{
         throw new InvalidActionException("Cant create");
     }
 
     public void tryToAttack(String aName, String target)throws InvalidActionException{
         throw new InvalidActionException("Cant attack");
     }
+
+    public void tryToEquip(String character, String aWeapon) throws InvalidActionException{
+        throw new InvalidActionException("Cant Equip");
+    }
+
 }

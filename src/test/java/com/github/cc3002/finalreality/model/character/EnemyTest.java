@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class EnemyTest extends AbstractCharacterTest {
 
@@ -34,6 +35,7 @@ class EnemyTest extends AbstractCharacterTest {
     assertNotEquals(engi, goblin);
     assertNotEquals(goblin.hashCode(), engi.hashCode());
     assertNotEquals(goblin2, goblin);
+    assertNull(goblin.getEquippedWeapon());
 
 
     checkConstruction(new Enemy(ENEMY_NAME, 10, turns),

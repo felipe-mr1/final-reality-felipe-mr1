@@ -8,6 +8,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import com.github.cc3002.finalreality.model.weapon.IWeapon;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -50,7 +51,7 @@ public class Enemy extends AbstractCharacter {
   public void attack(ICharacter character) {
     Random rng = new Random();
     if (character.getHealthPoints()>0 && this.getHealthPoints()>0) {
-      character.setHealthPoints(20);
+      character.setHealthPoints(rng.nextInt(15)+40);
     }
   }
 
@@ -76,5 +77,6 @@ public class Enemy extends AbstractCharacter {
     return Objects.hash(getWeight());
   }
 
-
+  @Override
+  public void equip(IWeapon weapon){}
 }

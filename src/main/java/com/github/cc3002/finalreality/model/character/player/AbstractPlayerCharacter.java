@@ -57,6 +57,7 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
     if (getHealthPoints() >0){
       this.equippedWeapon = weapon;
       this.inventory(weapon);
+      super.equip(weapon);
     }
   }
   @Override
