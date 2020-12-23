@@ -1,8 +1,13 @@
-package com.github.cc3002.finalreality.model.Client;
+package com.github.cc3002.finalreality.model.Controller;
 
+import com.github.cc3002.finalreality.model.Controller.Phases.CreationPhase;
+import com.github.cc3002.finalreality.model.Controller.Phases.GameOverPhase;
+import com.github.cc3002.finalreality.model.Controller.Phases.InvalidActionException;
+import com.github.cc3002.finalreality.model.Controller.Phases.Phase;
 import com.github.cc3002.finalreality.model.character.AbstractCharacter;
 import com.github.cc3002.finalreality.model.character.ICharacter;
 import com.github.cc3002.finalreality.model.weapon.IWeapon;
+import javafx.scene.control.skin.TableHeaderRow;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -18,12 +23,16 @@ public class ControllerFF implements Observer {
     protected ArrayList<ICharacter> players = new ArrayList<>();
     protected ArrayList<ICharacter> enemies = new ArrayList<>();
     protected ArrayList<IWeapon> inventory = new ArrayList<>();
+    private Phase phase;
 
     public ControllerFF(){
         gameFactoryFF = new GameFactoryFF(turns);
+        setPhase(new CreationPhase(this));
     }
 
     public void createPlayer(String name, String characterClass){
+        //if (players.size() == 4){return;}
+        if (this.getPlayer(name)!= null){return;}
         var player = gameFactoryFF.createPlayer(name, characterClass);
         players.add(player);
     }
@@ -31,6 +40,15 @@ public class ControllerFF implements Observer {
     public void createEnemy(String name, int weight){
         var enemy = gameFactoryFF.createEnemy(name, weight);
         enemies.add(enemy);
+        //enemy.waitTurn();
+    }
+
+    public void createEnemies(){
+        Random rng = new Random();
+        for(int e = 0; e < rng.nextInt(4) + 1; e++){
+            createEnemy("Goblin" + e, rng.nextInt(15)+60);
+
+        }
     }
 
     public void createWeapon(String name, int damage, int weight, String type, int magicDamage){
@@ -38,10 +56,12 @@ public class ControllerFF implements Observer {
         inventory.add(weapon);
     }
 
-    public void inventory(PrintStream out){
+    public String inventory(){
+        StringBuilder bag = new StringBuilder();
         for (IWeapon weapon : inventory){
-            out.print(weapon.getName()+ "("+ weapon.getType()+ ")" + " ");
+            bag.append("Name: ").append(weapon.getName()).append(" || Type: ").append(weapon.getType()).append(" || Damage: ").append(weapon.getDamage()).append(" || Magic Damage: ").append(weapon.getMagicDamage()).append(" || Weight: ").append(weapon.getWeight()).append(" \n\n");
         }
+        return bag.toString();
     }
 
     public void equip(String name, String weapon){
@@ -55,7 +75,7 @@ public class ControllerFF implements Observer {
         for (ICharacter enemy : enemies){
             enemy.waitTurn();
         }
-        Thread.sleep(6000);
+        Thread.sleep(5000);
     }
 
     public ICharacter getRandomTarget(){
@@ -64,7 +84,7 @@ public class ControllerFF implements Observer {
         return players.get(i);
     }
 
-    private void enemyTurn(ICharacter enemy){
+    public void enemyTurn(ICharacter enemy){
         enemy.attack(this.getRandomTarget());
         enemy.waitTurn();
     }
@@ -89,17 +109,17 @@ public class ControllerFF implements Observer {
         this.getPlayer(name).waitTurn();
     }
 
-    public void getPlayersHealthPoints(PrintStream out){
+    /*public void getPlayersHealthPoints(PrintStream out){
         for (ICharacter player : players) {
             out.print("| "+ player.getName()+"("+player.getCharacterClass()+ ")" +" : "+player.getHealthPoints() + " | ");
         }
-    }
+    }/*
 
-    public void getEnemiesHealthPoints(PrintStream out){
+    /*public void getEnemiesHealthPoints(PrintStream out){
         for (ICharacter enemy : enemies) {
             out.print("| " +enemy.getName() +" : "+enemy.getHealthPoints() + " | ");
         }
-    }
+    }*/
 
     public ICharacter getPlayer(String target){
         try {
@@ -166,6 +186,7 @@ public class ControllerFF implements Observer {
     }
 
     public boolean gameOver(){
+        setPhase(new GameOverPhase(this));
         return this.playersDead() || this.enemiesDead();
     }
 
@@ -174,5 +195,99 @@ public class ControllerFF implements Observer {
         if (arg instanceof AbstractCharacter){
             System.out.println(((AbstractCharacter) arg).getName() +" has died");
         }
+    }
+
+    public void setPhase(Phase phase) {
+        this.phase = phase;
+        phase.setControllerFF(this);
+    }
+
+    public Phase getPhase(){
+        return phase;
+    }
+
+    public void TryToCreatePlayer(String aName, String aClass, String aWeapon, String aWeaponName)  {
+        try{
+            phase.tryToCreatePlayer(aName, aClass, aWeapon, aWeaponName);
+        } catch (InvalidActionException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public String getParty() {
+        StringBuilder party = new StringBuilder(" ");
+        for (ICharacter player : players){
+            party.append(player.getName()).append(" ");
+        }
+        return party.toString();
+    }
+
+    public int partySize() {
+        int size = 0;
+        for (ICharacter ignored : players){
+            size += 1;
+        }
+        return size;
+    }
+
+    public String getEnemies() {
+        StringBuilder allEnemies = new StringBuilder();
+        for (ICharacter enemy : enemies){
+            allEnemies.append(enemy.getName()).append("  HP[").append(enemy.getHealthPoints()).append("]    ");
+        }
+        return allEnemies.toString();
+    }
+
+    public String getPartyInfo() {
+        StringBuilder playersInfo = new StringBuilder();
+        for (ICharacter player: players){
+            playersInfo.append(player.getName()).append("  HP[").append(player.getHealthPoints()).append("]   ");
+        }
+        return playersInfo.toString();
+    }
+
+    public String getTurnOf() {
+        ICharacter turn = turns.poll();
+        String name;
+        if (turn == null) return "";
+        if (turn.getHealthPoints() == 0) return this.getTurnOf();
+        name = turn.getName();
+        return name;
+    }
+
+
+    public void tryToAttack(String turnOf, String s) {
+        try {
+            phase.tryToAttack(turnOf, s);
+        } catch (InvalidActionException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String getBattleInfo() {
+        String info = "";
+        for(ICharacter player : players){
+            info += player.getName() +"--- Class: "+ player.getCharacterClass()
+                    +"--- Defense Points:"+ player.getDefensePoints() +"--- Equipped Weapon"+ player.getEquippedWeapon().getName()
+                    +"["+player.getEquippedWeapon().getType()+"]"  + "\n\n";
+        }
+        return info;
+    }
+
+    public void tryToEquip(String currentTurn, String text) {
+        try {
+            phase.tryToEquip(currentTurn, text);
+        } catch (InvalidActionException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int enemySize() {
+        int size = 0;
+        for (ICharacter ignored : enemies){
+            size +=1;
+        }
+        return size;
     }
 }

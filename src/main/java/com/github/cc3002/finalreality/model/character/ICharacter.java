@@ -60,4 +60,6 @@ public interface ICharacter {
    * @return defense points
    */
   int getDefensePoints();
+
+  IWeapon getEquippedWeapon();
 }

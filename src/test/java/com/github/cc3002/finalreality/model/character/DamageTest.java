@@ -53,8 +53,8 @@ public class DamageTest{
         K_Adelbert.attack(Goblin);
         assertEquals(285.0, Goblin.getHealthPoints());
         Goblin.attack(BM_Vivi);
-        assertEquals(480.0, BM_Vivi.getHealthPoints());
-        BM_Vivi.setHealthPoints(480.0);
+        assertNotEquals(500, BM_Vivi.getHealthPoints());
+        BM_Vivi.setHealthPoints(550.0);
         BM_Vivi.equip(testStaff);
         assertNotEquals(testStaff, BM_Vivi.getEquippedWeapon());
         BM_Vivi.attack(Goblin);
