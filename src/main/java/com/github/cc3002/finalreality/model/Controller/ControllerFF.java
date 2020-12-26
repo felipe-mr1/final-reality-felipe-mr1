@@ -4,15 +4,12 @@ import com.github.cc3002.finalreality.model.Controller.Phases.CreationPhase;
 import com.github.cc3002.finalreality.model.Controller.Phases.GameOverPhase;
 import com.github.cc3002.finalreality.model.Controller.Phases.InvalidActionException;
 import com.github.cc3002.finalreality.model.Controller.Phases.Phase;
-import com.github.cc3002.finalreality.model.character.AbstractCharacter;
 import com.github.cc3002.finalreality.model.character.ICharacter;
 import com.github.cc3002.finalreality.model.weapon.IWeapon;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
 import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -33,8 +30,6 @@ public class ControllerFF implements PropertyChangeListener {
     }
 
     public void createPlayer(String name, String characterClass){
-        //if (this.getPlayer(name)!= null){return;}
-
         var player = gameFactoryFF.createPlayer(name, characterClass);
         if (player != null) {
             player.connect(this);
@@ -46,7 +41,6 @@ public class ControllerFF implements PropertyChangeListener {
     public void createEnemy(String name, int weight){
         var enemy = gameFactoryFF.createEnemy(name, weight);
         enemies.add(enemy);
-        //enemy.waitTurn();
     }
 
     public void createEnemies(){
@@ -85,12 +79,6 @@ public class ControllerFF implements PropertyChangeListener {
     }
 
     private ICharacter getRandomTarget(){
-        /*Random rng = new Random();
-        int i = rng.nextInt(this.partySize());
-        ICharacter target = players.get(i);
-        if (target.getHealthPoints()==0){this.getRandomTarget();}
-        this.attackedPlayer = target.getName();
-        return target;*/
         Random rng = new Random();
         int i = rng.nextInt(activePlayers.size());
         ICharacter target = players.get(i);
@@ -107,37 +95,12 @@ public class ControllerFF implements PropertyChangeListener {
         enemy.waitTurn();
     }
 
-    /*public ICharacter getTurn(){
-        var character = turns.poll();
-        try {
-            if (character.getHealthPoints() == 0) {
-                return null;
-            } else if (character.getCharacterClass().equals("Enemy")) {
-                this.enemyTurn(character);
-                return null;
-            } else {
-                return character;
-            }
-        }
-        catch (Exception ignored){return null;}
-    }*/
 
     public void attack(String name, String target){
         this.getPlayer(name).attack(this.getEnemy(target));
         this.getPlayer(name).waitTurn();
     }
 
-    /*public void getPlayersHealthPoints(PrintStream out){
-        for (ICharacter player : players) {
-            out.print("| "+ player.getName()+"("+player.getCharacterClass()+ ")" +" : "+player.getHealthPoints() + " | ");
-        }
-    }/*
-
-    /*public void getEnemiesHealthPoints(PrintStream out){
-        for (ICharacter enemy : enemies) {
-            out.print("| " +enemy.getName() +" : "+enemy.getHealthPoints() + " | ");
-        }
-    }*/
 
     public ICharacter getPlayer(String target){
         try {
@@ -237,13 +200,7 @@ public class ControllerFF implements PropertyChangeListener {
     }
 
     public int partySize() {
-        /*int size = 0;
-        for (ICharacter ignored : players){
-            size += 1;
-        }
-        return size;*/
-        int size = players.size();
-        return size;
+        return players.size();
     }
 
     public String getEnemies() {
@@ -299,13 +256,7 @@ public class ControllerFF implements PropertyChangeListener {
     }
 
     public int enemySize() {
-        /*int size = 0;
-        for (ICharacter ignored : enemies){
-            size +=1;
-        }
-        return size;*/
-        int size = enemies.size();
-        return size;
+        return enemies.size();
     }
 
     @Override

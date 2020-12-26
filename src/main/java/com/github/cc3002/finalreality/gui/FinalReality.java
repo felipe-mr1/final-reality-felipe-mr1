@@ -1,7 +1,6 @@
 package com.github.cc3002.finalreality.gui;
 
 import com.github.cc3002.finalreality.model.Controller.ControllerFF;
-import com.github.cc3002.finalreality.model.Controller.GameFactoryFF;
 import com.github.cc3002.finalreality.model.Controller.Phases.*;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -35,15 +34,13 @@ public class FinalReality extends Application {
   private final Label Inventory = new Label("");
   private final Label PartyInfo = new Label("");
   private final Label attackInfo = new Label("");
-  private TextField weapon_to_equip = new TextField();
+  private final TextField weapon_to_equip = new TextField();
 
   private Button btn_attack = new Button("Attack");
 
   private String help;
   private final Label attacker = new Label("");
-  //
   private Stage primary_stage;
-  //
   private final Group root4 = new Group();
   public static void main(String[] args) {
     launch(args);
@@ -133,11 +130,7 @@ public class FinalReality extends Application {
 
     // Button Main Phase
     btn_attack = new Button("Attack");
-    btn_attack.setOnAction(actionEvent -> attack());/*{
-      if(!(controllerFF.gameOver())){ if (enemyTurn(currentTurn)){primaryStage.setScene(main_scene);}
-      else{primaryStage.setScene(attack_scene);
-      controllerFF.setPhase(new AttackPhase(controllerFF));}}
-    });*/
+    btn_attack.setOnAction(actionEvent -> attack());
     btn_attack.setLayoutX(50);
     btn_attack.setLayoutY(250);
     Button btn_inventory = new Button("Inventory");
@@ -166,36 +159,6 @@ public class FinalReality extends Application {
 
     main_scene = new Scene(root3, 640, 480);
 
-    // Root 4 -- Attack
-    //Group root4 = new Group();
-
-    // Button Attack
-    /*Button btn_enemy1 = new Button("Attack 0");
-    btn_enemy1.setOnAction(e->tryToAttack("Goblin0"));
-    btn_enemy1.setLayoutX(10);
-    btn_enemy1.setLayoutY(240);
-    Button btn_enemy2 = new Button("Attack 1");
-    btn_enemy2.setOnAction(e->tryToAttack("Goblin1"));
-    btn_enemy2.setLayoutX(100);
-    btn_enemy2.setLayoutY(240);
-    Button btn_enemy3 = new Button("Attack 2");
-    btn_enemy3.setOnAction(e->tryToAttack("Goblin2"));
-    btn_enemy3.setLayoutX(190);
-    btn_enemy3.setLayoutY(240);
-    Button btn_enemy4 = new Button("Attack 3");
-    btn_enemy4.setOnAction(e->tryToAttack("Goblin3"));
-    btn_enemy4.setLayoutX(280);
-    btn_enemy4.setLayoutY(240);*/
-
-    /*TextField target_input = new TextField();
-    target_input.setPromptText("Enemy target");
-    target_input.setLayoutX(10);
-    target_input.setLayoutY(300);
-
-    Button btn_target = new Button("Attack");
-    btn_target.setOnAction( e-> tryToAttack(target_input.getText()));
-    btn_target.setLayoutX(10);
-    btn_target.setLayoutY(330);*/
 
     Button btn_attack_back = new Button("<-- Back");
     btn_attack_back.setOnAction(e->primaryStage.setScene(main_scene));
@@ -210,7 +173,7 @@ public class FinalReality extends Application {
     attacker.setLayoutX(200);
     attacker.setLayoutY(100);
 
-    root4.getChildren().addAll(/*btn_enemy1, btn_enemy2, btn_enemy3, btn_enemy4,*/ EnemiesA, PlayersA, attacker, /*btn_target, target_input,*/ btn_attack_back);
+    root4.getChildren().addAll( EnemiesA, PlayersA, attacker, btn_attack_back);
 
     attack_scene = new Scene(root4, 640, 480);
 
@@ -272,7 +235,6 @@ public class FinalReality extends Application {
 
   private void tryToEquip(String text) {
     controllerFF.tryToEquip(currentTurn, text);
-    //controllerFF.equip(currentTurn, text);
   }
 
   private void begin() {
@@ -371,7 +333,6 @@ public class FinalReality extends Application {
     }
 
     if (controllerFF.gameOver()){
-      //controllerFF.setPhase(new GameOverPhase(controllerFF));
       GameOver.setText("Game Over!");
     }
   }
@@ -387,7 +348,6 @@ public class FinalReality extends Application {
   private boolean enemyTurn(String character)  {
 
     if (controllerFF.getEnemy(character)!= null){
-        //btn_attack.setText("Next");
         controllerFF.enemyTurn(controllerFF.getEnemy(character));
 
         attackInfo.setText(character + " attacked " + controllerFF.getAttackedPlayer() + " for "+ controllerFF.getPlayer(controllerFF.getAttackedPlayer()).getDamageReceived());

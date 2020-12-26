@@ -1,10 +1,7 @@
 package com.github.cc3002.finalreality.model.character;
-
 import com.github.cc3002.finalreality.model.Controller.ControllerFF;
 import com.github.cc3002.finalreality.model.weapon.*;
-
 import java.beans.PropertyChangeSupport;
-import java.util.Observable;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ScheduledExecutorService;
 
