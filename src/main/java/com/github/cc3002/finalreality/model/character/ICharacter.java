@@ -1,5 +1,6 @@
 package com.github.cc3002.finalreality.model.character;
 
+import com.github.cc3002.finalreality.model.Controller.ControllerFF;
 import com.github.cc3002.finalreality.model.weapon.*;
 
 /**
@@ -61,5 +62,23 @@ public interface ICharacter {
    */
   int getDefensePoints();
 
+
+  /**
+   * method to get the weapon that a character is using
+   * @return the equipped weapon
+   */
   IWeapon getEquippedWeapon();
+
+  /**
+   * method to get the value of the last attack that
+   * the character received
+   * @return damage received
+   */
+  double getDamageReceived();
+
+  /**
+   * connects the observable character with the controller(Listener)
+   * @param controllerFF
+   */
+  void connect(ControllerFF controllerFF);
 }

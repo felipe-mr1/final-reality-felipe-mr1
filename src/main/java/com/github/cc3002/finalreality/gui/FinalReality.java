@@ -33,16 +33,15 @@ public class FinalReality extends Application {
   private final Label GameOver = new Label("");
   private final Label Inventory = new Label("");
   private final Label PartyInfo = new Label("");
-  private TextField weapon_to_equip = new TextField();
+  private final Label attackInfo = new Label("");
+  private final TextField weapon_to_equip = new TextField();
 
   private Button btn_attack = new Button("Attack");
 
   private String help;
   private final Label attacker = new Label("");
-  //
   private Stage primary_stage;
-  //
-  private Group root4 = new Group();
+  private final Group root4 = new Group();
   public static void main(String[] args) {
     launch(args);
   }
@@ -76,28 +75,38 @@ public class FinalReality extends Application {
     btn2.setOnAction(e -> TryToCreatePlayer("Emily", "Black Mage", "Knife", "Cuchillito"));
     btn2.setLayoutX(10);
     btn2.setLayoutY(50);
+
     Button btn3 = new Button("Engineer");
     btn3.setOnAction(e -> TryToCreatePlayer("Emo", "Engineer", "Bow", "Arco"));
     btn3.setLayoutX(130);
     btn3.setLayoutY(50);
+
     Button btn4 = new Button("Knight");
     btn4.setOnAction((e-> TryToCreatePlayer("Karol", "Knight", "Axe", "Hacha")));
     btn4.setLayoutX(215);
     btn4.setLayoutY(50);
+
     Button btn5 = new Button("Thief");
     btn5.setOnAction(e-> TryToCreatePlayer("Tata", "Thief", "Sword", "Espada"));
     btn5.setLayoutX(300);
     btn5.setLayoutY(50);
+
     Button btn6 = new Button("White Mage");
     btn6.setOnAction(e-> TryToCreatePlayer("Waldo", "White Mage", "Staff", "Baston"));
     btn6.setLayoutX(370);
     btn6.setLayoutY(50);
+
     Button btn_set_scn3 = new Button("Start");
     btn_set_scn3.setLayoutX(200);
     btn_set_scn3.setLayoutY(140);
     btn_set_scn3.setOnAction(e->begin());
 
-    root2.getChildren().addAll(btn2, btn3, btn4, btn5, btn6, btn_set_scn3);
+    Button reset = new Button("Reset");
+    reset.setOnAction(e-> {controllerFF = new ControllerFF(); primary_stage.setScene(creation_scene);});
+    reset.setLayoutX(200);
+    reset.setLayoutY(180);
+
+    root2.getChildren().addAll(btn2, btn3, btn4, btn5, btn6, btn_set_scn3, reset);
 
 
     // Creation Scene
@@ -121,11 +130,7 @@ public class FinalReality extends Application {
 
     // Button Main Phase
     btn_attack = new Button("Attack");
-    btn_attack.setOnAction(actionEvent -> {
-      if(!(controllerFF.gameOver())){ if (enemyTurn(currentTurn)){primaryStage.setScene(main_scene);}
-      else{primaryStage.setScene(attack_scene);
-      controllerFF.setPhase(new AttackPhase(controllerFF));}}
-    });
+    btn_attack.setOnAction(actionEvent -> attack());
     btn_attack.setLayoutX(50);
     btn_attack.setLayoutY(250);
     Button btn_inventory = new Button("Inventory");
@@ -148,40 +153,12 @@ public class FinalReality extends Application {
     turnOf.setLayoutY(100);
     GameOver.setLayoutX(200);
     GameOver.setLayoutY(290);
-    root3.getChildren().addAll(Enemies, Players, turnOf, GameOver, btn_attack, btn_inventory, btn_team_info);
+    attackInfo.setLayoutX(200);
+    attackInfo.setLayoutY(330);
+    root3.getChildren().addAll(Enemies, Players, turnOf, GameOver, btn_attack, btn_inventory, btn_team_info, attackInfo);
 
     main_scene = new Scene(root3, 640, 480);
 
-    // Root 4 -- Attack
-    //Group root4 = new Group();
-
-    // Button Attack
-    /*Button btn_enemy1 = new Button("Attack 0");
-    btn_enemy1.setOnAction(e->tryToAttack("Goblin0"));
-    btn_enemy1.setLayoutX(10);
-    btn_enemy1.setLayoutY(240);
-    Button btn_enemy2 = new Button("Attack 1");
-    btn_enemy2.setOnAction(e->tryToAttack("Goblin1"));
-    btn_enemy2.setLayoutX(100);
-    btn_enemy2.setLayoutY(240);
-    Button btn_enemy3 = new Button("Attack 2");
-    btn_enemy3.setOnAction(e->tryToAttack("Goblin2"));
-    btn_enemy3.setLayoutX(190);
-    btn_enemy3.setLayoutY(240);
-    Button btn_enemy4 = new Button("Attack 3");
-    btn_enemy4.setOnAction(e->tryToAttack("Goblin3"));
-    btn_enemy4.setLayoutX(280);
-    btn_enemy4.setLayoutY(240);*/
-
-    /*TextField target_input = new TextField();
-    target_input.setPromptText("Enemy target");
-    target_input.setLayoutX(10);
-    target_input.setLayoutY(300);
-
-    Button btn_target = new Button("Attack");
-    btn_target.setOnAction( e-> tryToAttack(target_input.getText()));
-    btn_target.setLayoutX(10);
-    btn_target.setLayoutY(330);*/
 
     Button btn_attack_back = new Button("<-- Back");
     btn_attack_back.setOnAction(e->primaryStage.setScene(main_scene));
@@ -196,7 +173,7 @@ public class FinalReality extends Application {
     attacker.setLayoutX(200);
     attacker.setLayoutY(100);
 
-    root4.getChildren().addAll(/*btn_enemy1, btn_enemy2, btn_enemy3, btn_enemy4,*/ EnemiesA, PlayersA, attacker, /*btn_target, target_input,*/ btn_attack_back);
+    root4.getChildren().addAll( EnemiesA, PlayersA, attacker, btn_attack_back);
 
     attack_scene = new Scene(root4, 640, 480);
 
@@ -258,7 +235,6 @@ public class FinalReality extends Application {
 
   private void tryToEquip(String text) {
     controllerFF.tryToEquip(currentTurn, text);
-    //controllerFF.equip(currentTurn, text);
   }
 
   private void begin() {
@@ -290,6 +266,21 @@ public class FinalReality extends Application {
       currentTurn = controllerFF.getTurnOf();
       turnOf.setText("Turn of: "+ currentTurn);
       primary_stage.setScene(main_scene);
+    }
+  }
+
+  private void attack(){
+    if(!(controllerFF.gameOver())){
+      if (enemyTurn(currentTurn)){
+        primary_stage.setScene(main_scene);}
+      else {
+        try {
+          Thread.sleep(500);
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
+        primary_stage.setScene(attack_scene);
+        controllerFF.setPhase(new AttackPhase(controllerFF));}
     }
   }
 
@@ -331,6 +322,7 @@ public class FinalReality extends Application {
   private void tryToAttack(String target)  {
     if ((controllerFF.getEnemy(target)!=null)&&(controllerFF.getEnemy(target).getHealthPoints()>0)){
       controllerFF.tryToAttack(currentTurn, target);
+      attackInfo.setText(currentTurn + " attacked " + target + " for " + controllerFF.getEnemy(target).getDamageReceived());
 
       // Next turn
       currentTurn = controllerFF.getTurnOf();
@@ -341,7 +333,6 @@ public class FinalReality extends Application {
     }
 
     if (controllerFF.gameOver()){
-      //controllerFF.setPhase(new GameOverPhase(controllerFF));
       GameOver.setText("Game Over!");
     }
   }
@@ -357,8 +348,9 @@ public class FinalReality extends Application {
   private boolean enemyTurn(String character)  {
 
     if (controllerFF.getEnemy(character)!= null){
-        //btn_attack.setText("Next");
         controllerFF.enemyTurn(controllerFF.getEnemy(character));
+
+        attackInfo.setText(character + " attacked " + controllerFF.getAttackedPlayer() + " for "+ controllerFF.getPlayer(controllerFF.getAttackedPlayer()).getDamageReceived());
 
         currentTurn = controllerFF.getTurnOf();
         turnOf.setText("Turn of: " + currentTurn);

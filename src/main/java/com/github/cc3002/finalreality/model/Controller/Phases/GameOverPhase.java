@@ -6,4 +6,9 @@ public class GameOverPhase extends Phase {
     public GameOverPhase(ControllerFF controllerFF) {
         super(controllerFF);
     }
+    @Override
+    public void tryToCreatePlayer(String aName, String aClass, String aWeapon, String aWeaponName){}
+
+    @Override
+    public void tryToEquip(String character, String aWeapon){}
 }

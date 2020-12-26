@@ -50,6 +50,7 @@ public class DamageTest{
     void receiveDamageTest(){
         BM_Vivi.attack(K_Adelbert);
         assertEquals(797.0, K_Adelbert.getHealthPoints());
+        assertEquals(3.0, K_Adelbert.getDamageReceived());
         K_Adelbert.attack(Goblin);
         assertEquals(285.0, Goblin.getHealthPoints());
         Goblin.attack(BM_Vivi);

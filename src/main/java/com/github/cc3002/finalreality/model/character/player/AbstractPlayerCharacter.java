@@ -21,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
 public abstract class AbstractPlayerCharacter extends AbstractCharacter implements com.github.cc3002.finalreality.model.character.player.IPlayer {
 
   protected IWeapon equippedWeapon = null;
-  protected ArrayList<IWeapon> weapons = new ArrayList();
+  protected ArrayList<IWeapon> weapons = new ArrayList<>();
 
 
   /**
