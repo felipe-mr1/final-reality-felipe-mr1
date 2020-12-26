@@ -23,6 +23,7 @@ public abstract class AbstractCharacter extends Observable implements ICharacter
   private double healthPoints;
   private final int defensePoints;
   private IWeapon equippedWeapon = null;
+  private double damageReceived = 0;
 
   protected AbstractCharacter(@NotNull BlockingQueue<ICharacter> turnsQueue,
                               @NotNull java.lang.String name, String characterClass, double healthPoints, int defensePoints) {
@@ -61,6 +62,7 @@ public abstract class AbstractCharacter extends Observable implements ICharacter
   @Override
   public void setHealthPoints(double value) {
     this.healthPoints = this.healthPoints - value;
+    damageReceived = value;
     if (this.healthPoints <= 0){
       setChanged();
       this.healthPoints = 0;
@@ -71,5 +73,9 @@ public abstract class AbstractCharacter extends Observable implements ICharacter
   @Override
   public int getDefensePoints(){return this.defensePoints;}
 
+  @Override
   public IWeapon getEquippedWeapon(){return this.equippedWeapon;}
+
+  @Override
+  public double getDamageReceived(){return this.damageReceived;}
 }

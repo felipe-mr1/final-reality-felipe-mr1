@@ -1,6 +1,7 @@
 package com.github.cc3002.finalreality.gui;
 
 import com.github.cc3002.finalreality.model.Controller.ControllerFF;
+import com.github.cc3002.finalreality.model.Controller.GameFactoryFF;
 import com.github.cc3002.finalreality.model.Controller.Phases.*;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -33,6 +34,7 @@ public class FinalReality extends Application {
   private final Label GameOver = new Label("");
   private final Label Inventory = new Label("");
   private final Label PartyInfo = new Label("");
+  private final Label attackInfo = new Label("");
   private TextField weapon_to_equip = new TextField();
 
   private Button btn_attack = new Button("Attack");
@@ -42,7 +44,7 @@ public class FinalReality extends Application {
   //
   private Stage primary_stage;
   //
-  private Group root4 = new Group();
+  private final Group root4 = new Group();
   public static void main(String[] args) {
     launch(args);
   }
@@ -76,28 +78,38 @@ public class FinalReality extends Application {
     btn2.setOnAction(e -> TryToCreatePlayer("Emily", "Black Mage", "Knife", "Cuchillito"));
     btn2.setLayoutX(10);
     btn2.setLayoutY(50);
+
     Button btn3 = new Button("Engineer");
     btn3.setOnAction(e -> TryToCreatePlayer("Emo", "Engineer", "Bow", "Arco"));
     btn3.setLayoutX(130);
     btn3.setLayoutY(50);
+
     Button btn4 = new Button("Knight");
     btn4.setOnAction((e-> TryToCreatePlayer("Karol", "Knight", "Axe", "Hacha")));
     btn4.setLayoutX(215);
     btn4.setLayoutY(50);
+
     Button btn5 = new Button("Thief");
     btn5.setOnAction(e-> TryToCreatePlayer("Tata", "Thief", "Sword", "Espada"));
     btn5.setLayoutX(300);
     btn5.setLayoutY(50);
+
     Button btn6 = new Button("White Mage");
     btn6.setOnAction(e-> TryToCreatePlayer("Waldo", "White Mage", "Staff", "Baston"));
     btn6.setLayoutX(370);
     btn6.setLayoutY(50);
+
     Button btn_set_scn3 = new Button("Start");
     btn_set_scn3.setLayoutX(200);
     btn_set_scn3.setLayoutY(140);
     btn_set_scn3.setOnAction(e->begin());
 
-    root2.getChildren().addAll(btn2, btn3, btn4, btn5, btn6, btn_set_scn3);
+    Button reset = new Button("Reset");
+    reset.setOnAction(e-> {controllerFF = new ControllerFF(); primary_stage.setScene(creation_scene);});
+    reset.setLayoutX(200);
+    reset.setLayoutY(180);
+
+    root2.getChildren().addAll(btn2, btn3, btn4, btn5, btn6, btn_set_scn3, reset);
 
 
     // Creation Scene
@@ -148,7 +160,9 @@ public class FinalReality extends Application {
     turnOf.setLayoutY(100);
     GameOver.setLayoutX(200);
     GameOver.setLayoutY(290);
-    root3.getChildren().addAll(Enemies, Players, turnOf, GameOver, btn_attack, btn_inventory, btn_team_info);
+    attackInfo.setLayoutX(200);
+    attackInfo.setLayoutY(330);
+    root3.getChildren().addAll(Enemies, Players, turnOf, GameOver, btn_attack, btn_inventory, btn_team_info, attackInfo);
 
     main_scene = new Scene(root3, 640, 480);
 
@@ -331,6 +345,7 @@ public class FinalReality extends Application {
   private void tryToAttack(String target)  {
     if ((controllerFF.getEnemy(target)!=null)&&(controllerFF.getEnemy(target).getHealthPoints()>0)){
       controllerFF.tryToAttack(currentTurn, target);
+      attackInfo.setText(currentTurn + " attacked " + target + " for " + controllerFF.getEnemy(target).getDamageReceived());
 
       // Next turn
       currentTurn = controllerFF.getTurnOf();
@@ -359,6 +374,8 @@ public class FinalReality extends Application {
     if (controllerFF.getEnemy(character)!= null){
         //btn_attack.setText("Next");
         controllerFF.enemyTurn(controllerFF.getEnemy(character));
+
+        attackInfo.setText(character + " attacked " + controllerFF.getAttackedPlayer() + " for "+ controllerFF.getPlayer(controllerFF.getAttackedPlayer()).getDamageReceived());
 
         currentTurn = controllerFF.getTurnOf();
         turnOf.setText("Turn of: " + currentTurn);

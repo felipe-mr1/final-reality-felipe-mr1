@@ -56,7 +56,8 @@ public class ControllerTest {
         controllerFF.equip("Bolivia", "Hacha");
         controllerFF.equip("Peru", "Ballesta");
         controllerFF.addToQueue();
-        assertNotEquals(controllerFF.getTurn(), controllerFF.getTurn());
+        //assertNotEquals(controllerFF.getTurn(), controllerFF.getTurn());
+        assertNotEquals(controllerFF.getTurnOf(), controllerFF.getTurnOf());
     }
 
     @Test
@@ -95,6 +96,11 @@ public class ControllerTest {
         controllerFF.equip("Peru", "Ballesta");
         controllerFF.addToQueue();
         assertFalse(controllerFF.playersDead());
+        ControllerFF controllerFF1 = new ControllerFF();
+        controllerFF1.TryToCreatePlayer("Felipe", "Thief", "Sword", "Espadaxd");
+        controllerFF1.createEnemies();
+        controllerFF1.enemyTurn(controllerFF1.getEnemy("Goblin0"));
+        assertEquals("Felipe", controllerFF1.getAttackedPlayer());
     }
 
     @Test
@@ -150,6 +156,7 @@ public class ControllerTest {
         controllerFF.tryToEquip("Chile", "Espada");
         controllerFF.setPhase(new AttackPhase(controllerFF));
         controllerFF.tryToAttack("Chile", "Enemy0");
+
         assertNotEquals(300, controllerFF.getEnemy("Enemy0").getHealthPoints());
         ControllerFF controllerFF1 = new ControllerFF();
         controllerFF1.setPhase(new CreationPhase(controllerFF1));

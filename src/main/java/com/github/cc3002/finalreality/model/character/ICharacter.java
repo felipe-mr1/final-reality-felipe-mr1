@@ -61,5 +61,18 @@ public interface ICharacter {
    */
   int getDefensePoints();
 
+
+  /**
+   * method to get the weapon that a character is using
+   * @return the equipped weapon
+   */
   IWeapon getEquippedWeapon();
+
+  /**
+   * method to get the value of the last attack that
+   * the character received
+   * @return damage received
+   */
+  double getDamageReceived();
+
 }

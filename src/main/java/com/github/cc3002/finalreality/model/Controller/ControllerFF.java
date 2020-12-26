@@ -7,9 +7,7 @@ import com.github.cc3002.finalreality.model.Controller.Phases.Phase;
 import com.github.cc3002.finalreality.model.character.AbstractCharacter;
 import com.github.cc3002.finalreality.model.character.ICharacter;
 import com.github.cc3002.finalreality.model.weapon.IWeapon;
-import javafx.scene.control.skin.TableHeaderRow;
 
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -24,6 +22,7 @@ public class ControllerFF implements Observer {
     protected ArrayList<ICharacter> enemies = new ArrayList<>();
     protected ArrayList<IWeapon> inventory = new ArrayList<>();
     private Phase phase;
+    private String attackedPlayer = null;
 
     public ControllerFF(){
         gameFactoryFF = new GameFactoryFF(turns);
@@ -78,10 +77,17 @@ public class ControllerFF implements Observer {
         Thread.sleep(5000);
     }
 
-    public ICharacter getRandomTarget(){
+    private ICharacter getRandomTarget(){
         Random rng = new Random();
-        int i = rng.nextInt(4);
-        return players.get(i);
+        int i = rng.nextInt(this.partySize());
+        ICharacter target = players.get(i);
+        if (target.getHealthPoints()==0){this.getRandomTarget();}
+        this.attackedPlayer = target.getName();
+        return target;
+    }
+
+    public String getAttackedPlayer(){
+        return this.attackedPlayer;
     }
 
     public void enemyTurn(ICharacter enemy){
@@ -89,7 +95,7 @@ public class ControllerFF implements Observer {
         enemy.waitTurn();
     }
 
-    public ICharacter getTurn(){
+    /*public ICharacter getTurn(){
         var character = turns.poll();
         try {
             if (character.getHealthPoints() == 0) {
@@ -102,7 +108,7 @@ public class ControllerFF implements Observer {
             }
         }
         catch (Exception ignored){return null;}
-    }
+    }*/
 
     public void attack(String name, String target){
         this.getPlayer(name).attack(this.getEnemy(target));
