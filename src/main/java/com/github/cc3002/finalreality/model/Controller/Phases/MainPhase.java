@@ -7,5 +7,6 @@ public class MainPhase extends Phase {
         super(controllerFF);
     }
 
-
+    @Override
+    public void tryToCreatePlayer(String aName, String aClass, String aWeapon, String aWeaponName){}
 }

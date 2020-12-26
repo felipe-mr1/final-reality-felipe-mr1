@@ -8,6 +8,8 @@ import com.github.cc3002.finalreality.model.character.AbstractCharacter;
 import com.github.cc3002.finalreality.model.character.ICharacter;
 import com.github.cc3002.finalreality.model.weapon.IWeapon;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -15,10 +17,11 @@ import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class ControllerFF implements Observer {
+public class ControllerFF implements PropertyChangeListener {
     protected GameFactoryFF gameFactoryFF;
     protected BlockingQueue<ICharacter> turns = new LinkedBlockingQueue<>();
     protected ArrayList<ICharacter> players = new ArrayList<>();
+    protected ArrayList<ICharacter> activePlayers = new ArrayList<>();
     protected ArrayList<ICharacter> enemies = new ArrayList<>();
     protected ArrayList<IWeapon> inventory = new ArrayList<>();
     private Phase phase;
@@ -30,10 +33,14 @@ public class ControllerFF implements Observer {
     }
 
     public void createPlayer(String name, String characterClass){
-        //if (players.size() == 4){return;}
-        if (this.getPlayer(name)!= null){return;}
+        //if (this.getPlayer(name)!= null){return;}
+
         var player = gameFactoryFF.createPlayer(name, characterClass);
-        players.add(player);
+        if (player != null) {
+            player.connect(this);
+            players.add(player);
+            activePlayers.add(player);
+        }
     }
 
     public void createEnemy(String name, int weight){
@@ -78,10 +85,15 @@ public class ControllerFF implements Observer {
     }
 
     private ICharacter getRandomTarget(){
-        Random rng = new Random();
+        /*Random rng = new Random();
         int i = rng.nextInt(this.partySize());
         ICharacter target = players.get(i);
         if (target.getHealthPoints()==0){this.getRandomTarget();}
+        this.attackedPlayer = target.getName();
+        return target;*/
+        Random rng = new Random();
+        int i = rng.nextInt(activePlayers.size());
+        ICharacter target = players.get(i);
         this.attackedPlayer = target.getName();
         return target;
     }
@@ -196,12 +208,7 @@ public class ControllerFF implements Observer {
         return this.playersDead() || this.enemiesDead();
     }
 
-    @Override
-    public void update(Observable o, Object arg) {
-        if (arg instanceof AbstractCharacter){
-            System.out.println(((AbstractCharacter) arg).getName() +" has died");
-        }
-    }
+
 
     public void setPhase(Phase phase) {
         this.phase = phase;
@@ -230,10 +237,12 @@ public class ControllerFF implements Observer {
     }
 
     public int partySize() {
-        int size = 0;
+        /*int size = 0;
         for (ICharacter ignored : players){
             size += 1;
         }
+        return size;*/
+        int size = players.size();
         return size;
     }
 
@@ -290,10 +299,18 @@ public class ControllerFF implements Observer {
     }
 
     public int enemySize() {
-        int size = 0;
+        /*int size = 0;
         for (ICharacter ignored : enemies){
             size +=1;
         }
+        return size;*/
+        int size = enemies.size();
         return size;
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        String name = (String) evt.getNewValue();
+        activePlayers.remove(getPlayer(name));
     }
 }

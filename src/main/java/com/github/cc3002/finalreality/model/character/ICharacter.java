@@ -1,5 +1,6 @@
 package com.github.cc3002.finalreality.model.character;
 
+import com.github.cc3002.finalreality.model.Controller.ControllerFF;
 import com.github.cc3002.finalreality.model.weapon.*;
 
 /**
@@ -75,4 +76,9 @@ public interface ICharacter {
    */
   double getDamageReceived();
 
+  /**
+   * connects the observable character with the controller(Listener)
+   * @param controllerFF
+   */
+  void connect(ControllerFF controllerFF);
 }

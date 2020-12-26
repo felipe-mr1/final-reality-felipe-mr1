@@ -1,7 +1,9 @@
 package com.github.cc3002.finalreality.model.character;
 
+import com.github.cc3002.finalreality.model.Controller.ControllerFF;
 import com.github.cc3002.finalreality.model.weapon.*;
 
+import java.beans.PropertyChangeSupport;
 import java.util.Observable;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ScheduledExecutorService;
@@ -14,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
  * @author Ignacio Slater Muñoz.
  * @author <Your name>
  */
-public abstract class AbstractCharacter extends Observable implements ICharacter {
+public abstract class AbstractCharacter implements ICharacter {
 
   protected final BlockingQueue<ICharacter> turnsQueue;
   protected final java.lang.String name;
@@ -24,6 +26,7 @@ public abstract class AbstractCharacter extends Observable implements ICharacter
   private final int defensePoints;
   private IWeapon equippedWeapon = null;
   private double damageReceived = 0;
+  private PropertyChangeSupport changes;
 
   protected AbstractCharacter(@NotNull BlockingQueue<ICharacter> turnsQueue,
                               @NotNull java.lang.String name, String characterClass, double healthPoints, int defensePoints) {
@@ -32,6 +35,7 @@ public abstract class AbstractCharacter extends Observable implements ICharacter
     this.characterClass = characterClass;
     this.healthPoints = healthPoints;
     this.defensePoints = defensePoints;
+    this.changes = new PropertyChangeSupport(this);
   }
 
 
@@ -64,9 +68,9 @@ public abstract class AbstractCharacter extends Observable implements ICharacter
     this.healthPoints = this.healthPoints - value;
     damageReceived = value;
     if (this.healthPoints <= 0){
-      setChanged();
+      changes.firePropertyChange("Out of combat", "", getName());
       this.healthPoints = 0;
-      notifyObservers(this);
+
     }
   }
 
@@ -78,4 +82,9 @@ public abstract class AbstractCharacter extends Observable implements ICharacter
 
   @Override
   public double getDamageReceived(){return this.damageReceived;}
+
+  @Override
+  public void connect(ControllerFF controllerFF){
+    changes.addPropertyChangeListener(controllerFF);
+  }
 }

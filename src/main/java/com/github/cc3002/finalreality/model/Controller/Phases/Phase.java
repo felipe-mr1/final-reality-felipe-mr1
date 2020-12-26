@@ -17,7 +17,7 @@ public class Phase {
         controllerFF.setPhase(phase);
     }
 
-    public void toMainPhase1() throws InvalidTransitionException {
+    public void toMainPhase() throws InvalidTransitionException {
         throw new InvalidTransitionException("Cant Change to main phase");
     }
 
@@ -29,9 +29,7 @@ public class Phase {
         throw new InvalidTransitionException("Cant Change to Inventory Phase");
     }
 
-    public void toEquipPhase() throws InvalidTransitionException {
-        throw new InvalidTransitionException("Cant Change to Equip Phase");
-    }
+
 
     public void tryToCreatePlayer(String aName, String aClass, String aWeapon, String aWeaponName) throws InvalidActionException{
         throw new InvalidActionException("Cant create");

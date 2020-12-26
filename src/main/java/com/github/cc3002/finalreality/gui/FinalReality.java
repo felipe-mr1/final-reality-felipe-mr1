@@ -133,11 +133,11 @@ public class FinalReality extends Application {
 
     // Button Main Phase
     btn_attack = new Button("Attack");
-    btn_attack.setOnAction(actionEvent -> {
+    btn_attack.setOnAction(actionEvent -> attack());/*{
       if(!(controllerFF.gameOver())){ if (enemyTurn(currentTurn)){primaryStage.setScene(main_scene);}
       else{primaryStage.setScene(attack_scene);
       controllerFF.setPhase(new AttackPhase(controllerFF));}}
-    });
+    });*/
     btn_attack.setLayoutX(50);
     btn_attack.setLayoutY(250);
     Button btn_inventory = new Button("Inventory");
@@ -304,6 +304,21 @@ public class FinalReality extends Application {
       currentTurn = controllerFF.getTurnOf();
       turnOf.setText("Turn of: "+ currentTurn);
       primary_stage.setScene(main_scene);
+    }
+  }
+
+  private void attack(){
+    if(!(controllerFF.gameOver())){
+      if (enemyTurn(currentTurn)){
+        primary_stage.setScene(main_scene);}
+      else {
+        try {
+          Thread.sleep(500);
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
+        primary_stage.setScene(attack_scene);
+        controllerFF.setPhase(new AttackPhase(controllerFF));}
     }
   }
 
