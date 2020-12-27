@@ -36,10 +36,43 @@ en particular puede equipar un cierto tipo de arma.
 
 ---
 
+Modelo
+
+El modelo de este proyecto contempla a los personajes del juego, los cuales unos corresponden a aquellos que el usuario puede
+controlar y los enemigos que intentan atacar a los personajes del jugador. Ademas, se cuentan con las armas que puede equipar cada
+personaje donde los enemigos no las pueden equipar. En esta sección se aplican diversos patrones de diseño de tal forma de ordenar
+el código.
+
+---
+
 Controlador
 
-Para esta etapa se implementa el controlador el cual es el intermediario entre el usuario y los objetos del modelo. El controlador
+Se implementa el controlador el cual es el intermediario entre el usuario y los objetos del modelo. El controlador
 contiene los metodos que permiten que los objetos interactuen entre sí. Cuenta con los métodos getters con el fin de que el usuario
 pueda conocer en todo momento datos como la vida de los personajes, enemigos, armas en el inventario, entre otos. Por otra parte,
-el controlador permite saber cuando han quedado fuera de juego los personajes del usuario tanto como los enemigos para así mandar un
+el controlador permite saber cuando han quedado fuera de juego, como observador, los personajes del usuario tanto como los enemigos para así mandar un
 mensaje de "Game Over".
+
+---
+
+Vista
+
+Se utiliza la libreria javaFX para realizar la interfaz grafica del juego. Se utilizan labels para mostrar información
+importante del juego y botones para recibir la decision del usuario y asi llevarlo a las distintas fases del juego.
+Se toma en cuenta el input del usuario para saber a que enemigo atacar, que arma equipar y los personajes que desea utilizar.
+
+El GUI se comunica directamente con el controlador que maneja los objetos del juego con lo que se obtiene la dinamica para
+realizar una partida de principio a fin.
+
+El juego consiste en elegir cuatro personajes que corresponden al grupo con que se va a jugar. Se generan una cantidad de enemigos
+al azar entre 1 y 4. El juego termina cuando todos los enemigos mueran o todos los del grupo mueran.
+
+---
+
+Limitaciones
+
+1. No se alcanzó a implementar el uso de magias ni los efectos adversos que se tenia previsto hacer.
+
+2. Para la interfaz grafica se optó por elegir personajes predispuestos, de otra forma habría que contemplar una gran cantidad de inputs por parte del usuario
+para generar un juego a su gusto. Por motivos de no complicar y extender la fase de creacion se decide dar a elegir los personajes a utilizar y generar una cantidad
+al azar de enemigos (maximo 4).
