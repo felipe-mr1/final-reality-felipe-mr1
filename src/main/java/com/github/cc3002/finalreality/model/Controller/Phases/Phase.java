@@ -17,23 +17,6 @@ public class Phase {
         this.controllerFF = aControllerFF;
     }
 
-    protected void changePhase(Phase phase){
-        controllerFF.setPhase(phase);
-    }
-
-    public void toMainPhase() throws InvalidTransitionException {
-        throw new InvalidTransitionException("Cant Change to main phase");
-    }
-
-    public void toAttackPhase() throws InvalidTransitionException {
-        throw new InvalidTransitionException("Cant Change to Attack Phase");
-    }
-
-    public void toInventoryPhase() throws InvalidTransitionException {
-        throw new InvalidTransitionException("Cant Change to Inventory Phase");
-    }
-
-
 
     public void tryToCreatePlayer(String aName, String aClass, String aWeapon, String aWeaponName) throws InvalidActionException{
         throw new InvalidActionException("Cant create");
