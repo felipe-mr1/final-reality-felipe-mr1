@@ -2,6 +2,10 @@ package com.github.cc3002.finalreality.model.Controller.Phases;
 
 import com.github.cc3002.finalreality.model.Controller.ControllerFF;
 
+/**
+ * Class that will delimit the phases and dynamics of the game
+ */
+
 public class Phase {
     protected ControllerFF controllerFF;
 

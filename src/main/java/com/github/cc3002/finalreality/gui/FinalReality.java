@@ -17,7 +17,7 @@ import javafx.stage.Stage;
  * <Complete here with the details of the implemented application>
  *
  * @author Ignacio Slater Muñoz.
- * @author <Your name>
+ * @author Felipe Morales
  */
 public class FinalReality extends Application {
 
@@ -34,14 +34,18 @@ public class FinalReality extends Application {
   private final Label Inventory = new Label("");
   private final Label PartyInfo = new Label("");
   private final Label attackInfo = new Label("");
+  private final Label attacker = new Label("");
   private final TextField weapon_to_equip = new TextField();
 
   private Button btn_attack = new Button("Attack");
 
   private String help;
-  private final Label attacker = new Label("");
+
   private Stage primary_stage;
-  private final Group root4 = new Group();
+
+  private final Group attack_root = new Group();
+  private final Group main_root = new Group();
+
   public static void main(String[] args) {
     launch(args);
   }
@@ -53,7 +57,7 @@ public class FinalReality extends Application {
 
     Group root = new Group();
     Label label = new Label("Welcome to Final Reality: Super Mega Alpha Edition");
-    Label note = new Label("You will encounter a random set of enemies between 1 and 4\nPlease DO NOT attack too fast");
+    Label note = new Label("You will encounter a random set of enemies between 1 and 4");
     root.getChildren().addAll(label, note);
     label.setLayoutX(200);
     label.setLayoutY(100);
@@ -126,7 +130,8 @@ public class FinalReality extends Application {
     creation_scene = new Scene(root2, 640, 480);
 
     // Root 3 -- Main Phase
-    Group root3 = new Group();
+
+    //Group root3 = new Group();
 
     // Button Main Phase
     btn_attack = new Button("Attack");
@@ -142,6 +147,8 @@ public class FinalReality extends Application {
     btn_team_info.setLayoutX(250);
     btn_team_info.setLayoutY(250);
 
+
+
     // Main Scene
     Enemies.setLayoutX(10);
     Enemies.setLayoutY(10);
@@ -155,13 +162,13 @@ public class FinalReality extends Application {
     GameOver.setLayoutY(290);
     attackInfo.setLayoutX(200);
     attackInfo.setLayoutY(330);
-    root3.getChildren().addAll(Enemies, Players, turnOf, GameOver, btn_attack, btn_inventory, btn_team_info, attackInfo);
+    main_root.getChildren().addAll(Enemies, Players, turnOf, GameOver, btn_attack, btn_inventory, btn_team_info, attackInfo);
 
-    main_scene = new Scene(root3, 640, 480);
+    main_scene = new Scene(main_root, 640, 480);
 
 
     Button btn_attack_back = new Button("<-- Back");
-    btn_attack_back.setOnAction(e->primaryStage.setScene(main_scene));
+    btn_attack_back.setOnAction(e->{primaryStage.setScene(main_scene); controllerFF.setPhase(new MainPhase(controllerFF));});
     btn_attack_back.setLayoutX(100);
     btn_attack_back.setLayoutY(300);
 
@@ -173,9 +180,9 @@ public class FinalReality extends Application {
     attacker.setLayoutX(200);
     attacker.setLayoutY(100);
 
-    root4.getChildren().addAll( EnemiesA, PlayersA, attacker, btn_attack_back);
+    attack_root.getChildren().addAll( EnemiesA, PlayersA, attacker, btn_attack_back);
 
-    attack_scene = new Scene(root4, 640, 480);
+    attack_scene = new Scene(attack_root, 640, 480);
 
     // Root 5 -- Inventory
     Group root5 = new Group();
@@ -229,14 +236,27 @@ public class FinalReality extends Application {
     primaryStage.show();
   }
 
+  /**
+   * Terminates the program
+   */
   private void closeProgram() {
     System.exit(0);
   }
 
-  private void tryToEquip(String text) {
-    controllerFF.tryToEquip(currentTurn, text);
+  /**
+   * Sends a message to the controller to equip a weapon
+   * @param aWeaponName weapon that will try to equip
+   */
+  private void tryToEquip(String aWeaponName) {
+    controllerFF.tryToEquip(currentTurn, aWeaponName);
   }
 
+  /**
+   * Creates a semi-predetermined game where it creates a random
+   * number of enemies and a set of weapons.
+   * Sets the buttons to attack the enemies and the text of the
+   * current turn
+   */
   private void begin() {
     if (controllerFF.partySize() == 4){
       controllerFF.createEnemies();
@@ -259,7 +279,7 @@ public class FinalReality extends Application {
         btn.setOnAction(e->tryToAttack("Goblin"+j));
         btn.setLayoutX(x);
         btn.setLayoutY(240);
-        root4.getChildren().add(btn);
+        attack_root.getChildren().add(btn);
         x+=90;
       }
       controllerFF.setPhase(new MainPhase(controllerFF));
@@ -269,22 +289,29 @@ public class FinalReality extends Application {
     }
   }
 
+  /**
+   * Puts a timer to give time to the queue.
+   * Depending the character turn will set the scene and
+   * controller phase
+   */
   private void attack(){
     if(!(controllerFF.gameOver())){
+      try {
+        Thread.sleep(500);
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
       if (enemyTurn(currentTurn)){
         primary_stage.setScene(main_scene);}
       else {
-        try {
-          Thread.sleep(500);
-        } catch (InterruptedException e) {
-          e.printStackTrace();
-        }
         primary_stage.setScene(attack_scene);
         controllerFF.setPhase(new AttackPhase(controllerFF));}
     }
   }
 
-
+  /**
+   * Sets a timer to have actualized values
+   */
   private void setupTimer() {
     AnimationTimer timer = new AnimationTimer() {
       @Override
@@ -315,10 +342,26 @@ public class FinalReality extends Application {
     timer.start();
   }
 
+  /**
+   * Sends a message to the controller to create a player
+   * Depends on the phase of the controller
+   * @param aName name of the character
+   * @param aClass class of the character
+   * @param aWeapon type of the weapon that the character will use
+   * @param aWeaponName name of said weapon
+   */
   private void TryToCreatePlayer(String aName, String aClass, String aWeapon, String aWeaponName) {
+    //if (controllerFF.getPlayer(aName)== null) {
     controllerFF.TryToCreatePlayer(aName, aClass, aWeapon, aWeaponName);
+    //}
   }
 
+  /**
+   * Sends a message to the controller to attack a target
+   * Checks if the current can attack the target
+   * Checks if the game is over with the help of the controller
+   * @param target name of the target that will be attacked
+   */
   private void tryToAttack(String target)  {
     if ((controllerFF.getEnemy(target)!=null)&&(controllerFF.getEnemy(target).getHealthPoints()>0)){
       controllerFF.tryToAttack(currentTurn, target);
@@ -333,10 +376,26 @@ public class FinalReality extends Application {
     }
 
     if (controllerFF.gameOver()){
-      GameOver.setText("Game Over!");
+      controllerFF.setPhase(new GameOverPhase(controllerFF));
+      Button closeGame = new Button("Close Game");
+      closeGame.setOnAction(e->primary_stage.close());
+      closeGame.setLayoutX(240);
+      closeGame.setLayoutY(360);
+      main_root.getChildren().add(closeGame);
+      if (controllerFF.enemiesDead()) {
+        GameOver.setText("Game Over! You Win!");
+      } else {
+        GameOver.setText("Game Over! You lose!");
+      }
     }
   }
 
+  /**
+   * Sets the text of the button attack
+   * depending on the current turn.
+   * If it's an enemy turn it will display Next
+   * @param currentTurn name of the character with the current turn
+   */
   private void setAttackButton(String currentTurn) {
     if (controllerFF.getEnemy(currentTurn)!=null){
       btn_attack.setText("Next");
@@ -345,6 +404,12 @@ public class FinalReality extends Application {
     }
   }
 
+  /**
+   * Checks if the current turn corresponds to an enemy
+   * Gets and displays the next turn
+   * @param character name of character with the current turn
+   * @return boolean. True if it's an enemy turn
+   */
   private boolean enemyTurn(String character)  {
 
     if (controllerFF.getEnemy(character)!= null){
