@@ -46,6 +46,7 @@ public class DamageTest{
         T_Zidane.equip(testBow);
         E_Cid.equip(testAxe);
     }
+
     @Test
     void receiveDamageTest(){
         BM_Vivi.attack(K_Adelbert);

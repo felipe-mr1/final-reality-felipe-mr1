@@ -9,7 +9,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
+/**
+ * Test the functionality of the controller
+ */
 public class ControllerTest {
 
     ControllerFF controllerFF;
@@ -84,8 +86,6 @@ public class ControllerTest {
 
     @Test
     public void controllerAttackTest() throws InterruptedException {
-        //controllerFF.getEnemiesHealthPoints(new PrintStream(OutputStream.nullOutputStream()));
-        //controllerFF.getPlayersHealthPoints(new PrintStream(OutputStream.nullOutputStream()));
         controllerFF.equip("Libano", "baston");
         controllerFF.equip("Siberia", "baston blanco");
         controllerFF.equip("Chile", "Espada");
@@ -168,5 +168,7 @@ public class ControllerTest {
         assertThrows(InvalidActionException.class, ()-> creationPhase.tryToEquip("Chile", "asd"));
         AttackPhase attackPhase = new AttackPhase(controllerFF);
         assertThrows(InvalidActionException.class, ()-> attackPhase.tryToCreatePlayer("a", "b", "c", "d"));
+        GameOverPhase gameOverPhase = new GameOverPhase(controllerFF);
+        assertThrows(InvalidActionException.class, ()->gameOverPhase.tryToAttack("Chile", "Goblin0"));
     }
 }

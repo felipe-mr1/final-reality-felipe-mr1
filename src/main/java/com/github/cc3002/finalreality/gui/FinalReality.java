@@ -193,6 +193,7 @@ public class FinalReality extends Application {
     btn_inv_goBack.setLayoutX(450);
     btn_inv_goBack.setLayoutY(150);
 
+    weapon_to_equip.setPromptText("Name of weapon");
     weapon_to_equip.setLayoutX(450);
     weapon_to_equip.setLayoutY(50);
 
@@ -378,7 +379,7 @@ public class FinalReality extends Application {
     if (controllerFF.gameOver()){
       controllerFF.setPhase(new GameOverPhase(controllerFF));
       Button closeGame = new Button("Close Game");
-      closeGame.setOnAction(e->primary_stage.close());
+      closeGame.setOnAction(e->closeProgram());
       closeGame.setLayoutX(240);
       closeGame.setLayoutY(360);
       main_root.getChildren().add(closeGame);

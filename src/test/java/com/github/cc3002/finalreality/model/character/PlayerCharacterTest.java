@@ -112,7 +112,6 @@ class PlayerCharacterTest extends AbstractCharacterTest  {
   }
 
   /**
-   * UNFINISHED, have to work on the method equip.
    * Checking the 'if' conditions on the method equip.
    *
    * Checks that the character didnt equip the weapon.

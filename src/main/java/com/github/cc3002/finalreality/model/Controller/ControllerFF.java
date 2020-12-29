@@ -1,7 +1,6 @@
 package com.github.cc3002.finalreality.model.Controller;
 
 import com.github.cc3002.finalreality.model.Controller.Phases.CreationPhase;
-import com.github.cc3002.finalreality.model.Controller.Phases.GameOverPhase;
 import com.github.cc3002.finalreality.model.Controller.Phases.InvalidActionException;
 import com.github.cc3002.finalreality.model.Controller.Phases.Phase;
 import com.github.cc3002.finalreality.model.character.ICharacter;
@@ -108,7 +107,7 @@ public class ControllerFF implements PropertyChangeListener {
 
     /**
      * adds each character to a queue for the turns
-     * @throws InterruptedException
+     * @throws InterruptedException interrupted exception
      */
     public void addToQueue() throws InterruptedException {
         for (ICharacter player : players){

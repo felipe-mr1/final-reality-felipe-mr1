@@ -21,7 +21,6 @@ import org.jetbrains.annotations.NotNull;
 public abstract class AbstractPlayerCharacter extends AbstractCharacter implements com.github.cc3002.finalreality.model.character.player.IPlayer {
 
   protected IWeapon equippedWeapon = null;
-  protected ArrayList<IWeapon> weapons = new ArrayList<>();
 
 
   /**
@@ -56,7 +55,6 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
   public void equip(IWeapon weapon){
     if (getHealthPoints() >0){
       this.equippedWeapon = weapon;
-      this.inventory(weapon);
       super.equip(weapon);
     }
   }
@@ -80,11 +78,6 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
     if (this.getHealthPoints()>0) {
       getEquippedWeapon().attack(character);
     }
-  }
-
-  @Override
-  public void inventory(IWeapon weapon){
-    weapons.add(weapon);
   }
 
   @Override
