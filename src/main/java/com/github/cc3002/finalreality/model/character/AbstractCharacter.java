@@ -5,7 +5,6 @@ import java.beans.PropertyChangeSupport;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ScheduledExecutorService;
 
-import org.jetbrains.annotations.NotNull;
 
 /**
  * An abstract class that holds the common behaviour of all the characters in the game.
@@ -25,8 +24,8 @@ public abstract class AbstractCharacter implements ICharacter {
   private double damageReceived = 0;
   private PropertyChangeSupport changes;
 
-  protected AbstractCharacter(@NotNull BlockingQueue<ICharacter> turnsQueue,
-                              @NotNull String name, String characterClass, double healthPoints, int defensePoints) {
+  protected AbstractCharacter( BlockingQueue<ICharacter> turnsQueue,
+                               String name, String characterClass, double healthPoints, int defensePoints) {
     this.turnsQueue = turnsQueue;
     this.name = name;
     this.characterClass = characterClass;

@@ -10,7 +10,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import com.github.cc3002.finalreality.model.weapon.*;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * A class that holds all the information of a single character of the game.
@@ -33,8 +32,8 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
    * @param characterClass
    *     the class of this character
    */
-  public AbstractPlayerCharacter(@NotNull String name,
-                                 @NotNull BlockingQueue<ICharacter> turnsQueue,
+  public AbstractPlayerCharacter( String name,
+                                  BlockingQueue<ICharacter> turnsQueue,
                                  final String characterClass, double healthPoints, int defensePoints) {
     super(turnsQueue, name, characterClass, healthPoints, defensePoints);
   }
