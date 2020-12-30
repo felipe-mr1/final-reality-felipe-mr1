@@ -16,7 +16,23 @@ enemies controlled by the computer.
 
 ---
 
-Jerarquia de Clases
+This project is built using gradle, javafx,  java 11 and it's tested with JUnit 5.4.
+
+Game
+---
+
+This consist in battle with turns between the user and computer. You start by choosing 4 players bewtween the 5:
+Emily, Karol, Tata, Waldo, and Emo. Each one of these characters has a particular class, which can equip different
+types of weapons and could, potentially, use magics (not implemented). The user will encounter a random set of
+enemies between 1 and 4, and the game will finish once all the enemies are dead or all the user's players are dead.
+
+During each turn the user can see their party info, inventory (where one can decide to equip a weapon in their inventory)
+and select a target to attack. Once it's the enemy turn the user has to click 'next' to continue the game and the
+computer will attack a random enemy.
+
+
+Jerarquia de Clases (Spanish)
+---
 
 Siguiendo los principios SOLID se diseña un código donde aquellas clases que tengan comportamientos comunes
 sean subclases de una clase abstracta la cual comprende aquellos comportamientos. En el caso de los distintos
@@ -34,18 +50,17 @@ Esto se hace con la idea de que si a futuro tienen atributos especificos para ca
 codigo y no modificar lo que ya esta escrito. Esto tambien se hace con el objeto de verificar si un personaje
 en particular puede equipar un cierto tipo de arma.
 
+Modelo (Spanish)
 ---
-
-Modelo
 
 El modelo de este proyecto contempla a los personajes del juego, los cuales unos corresponden a aquellos que el usuario puede
 controlar y los enemigos que intentan atacar a los personajes del jugador. Ademas, se cuentan con las armas que puede equipar cada
 personaje donde los enemigos no las pueden equipar. En esta sección se aplican diversos patrones de diseño de tal forma de ordenar
 el código.
 
----
 
-Controlador
+Controlador (Spanish)
+---
 
 Se implementa el controlador el cual es el intermediario entre el usuario y los objetos del modelo. El controlador
 contiene los metodos que permiten que los objetos interactuen entre sí. Cuenta con los métodos getters con el fin de que el usuario
@@ -53,9 +68,10 @@ pueda conocer en todo momento datos como la vida de los personajes, enemigos, ar
 el controlador permite saber cuando han quedado fuera de juego, como observador, los personajes del usuario tanto como los enemigos para así mandar un
 mensaje de "Game Over".
 
+
+Vista (Spanish)
 ---
 
-Vista
 
 Se utiliza la libreria javaFX para realizar la interfaz grafica del juego. Se utilizan labels para mostrar información
 importante del juego y botones para recibir la decision del usuario y asi llevarlo a las distintas fases del juego.
@@ -67,9 +83,10 @@ realizar una partida de principio a fin.
 El juego consiste en elegir cuatro personajes que corresponden al grupo con que se va a jugar. Se generan una cantidad de enemigos
 al azar entre 1 y 4. El juego termina cuando todos los enemigos mueran o todos los del grupo mueran.
 
+
+Limitaciones (Spanish)
 ---
 
-Limitaciones
 
 1. No se alcanzó a implementar el uso de magias ni los efectos adversos que se tenia previsto hacer.
 
