@@ -21,7 +21,7 @@ public interface ICharacter {
   /**
    * Returns this character's name.
    */
-  java.lang.String getName();
+  String getName();
 
 
   /**

@@ -10,7 +10,7 @@ import java.util.concurrent.BlockingQueue;
 public class BlackMage extends AbstractPlayerCharacter {
 
     int mana;
-    public BlackMage(final java.lang.String name,
+    public BlackMage(final String name,
                      final BlockingQueue<ICharacter> turnsQueue){
         super(name, turnsQueue, "Black Mage", 500, 2);
         this.mana = 200;

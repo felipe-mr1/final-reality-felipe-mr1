@@ -35,9 +35,6 @@ public abstract class AbstractCharacterTest {
     tryToEquip(testCharacters.get(0));
     testCharacters.get(0).waitTurn();
     try {
-      // Thread.sleep is not accurate so this values may be changed to adjust the
-      // acceptable error margin.
-      // We're testing that the character waits approximately 1 second.
       Thread.sleep(800);
       Assertions.assertEquals(0, turns.size());
       Thread.sleep(300);

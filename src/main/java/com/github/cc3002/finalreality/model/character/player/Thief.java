@@ -7,7 +7,7 @@ import java.util.concurrent.BlockingQueue;
 
 public class Thief extends AbstractPlayerCharacter {
     int defensePoints;
-    public Thief(final java.lang.String name,
+    public Thief(final String name,
                     final BlockingQueue<ICharacter> turnsQueue){
         super(name, turnsQueue, "Thief", 600, 2);
         this.defensePoints = 100;

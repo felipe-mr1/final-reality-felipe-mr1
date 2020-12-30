@@ -3,7 +3,7 @@ package com.github.cc3002.finalreality.model.character.player;
 import com.github.cc3002.finalreality.model.character.AbstractCharacter;
 import com.github.cc3002.finalreality.model.character.ICharacter;
 
-import java.util.ArrayList;
+
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
@@ -33,7 +33,7 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
    * @param characterClass
    *     the class of this character
    */
-  public AbstractPlayerCharacter(@NotNull java.lang.String name,
+  public AbstractPlayerCharacter(@NotNull String name,
                                  @NotNull BlockingQueue<ICharacter> turnsQueue,
                                  final String characterClass, double healthPoints, int defensePoints) {
     super(turnsQueue, name, characterClass, healthPoints, defensePoints);

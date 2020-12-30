@@ -27,9 +27,7 @@ public class DamageTest{
     @BeforeEach
     void setUp(){
         turns = new LinkedBlockingQueue<>();
-        //super.basicSetUp();
         BM_Vivi = new BlackMage("Vivi", turns);
-        //testCharacters.add(BM_Vivi);
         K_Adelbert = new Knight("Adelbert", turns);
         WM_Eiko = new WhiteMage("Eiko", turns);
         E_Cid = new Engineer("Cid", turns);
