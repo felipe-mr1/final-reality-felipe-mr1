@@ -20,37 +20,32 @@ public interface IPlayer {
 
     /**
      * Equips the type of weapon Axe
-     * @param axe
+     * @param axe axe to equip
      */
     void equipAxe(Axe axe);
 
     /**
      * Equips the type of weapon Bow
-     * @param bow
+     * @param bow bow to equip
      */
     void equipBow(Bow bow);
 
     /**
      * Equips the type of weapon Knife
-     * @param knife
+     * @param knife knife to equip
      */
     void equipKnife(Knife knife);
 
     /**
      * Equips the type of weapon Staff
-     * @param staff
+     * @param staff staff to equip
      */
     void equipStaff(Staff staff);
 
     /**
      * Equips the type of weapon Sword
-     * @param sword
+     * @param sword sword to equip
      */
     void equipSword(Sword sword);
 
-    /**
-     * Adds a weapon to the character's inventory
-     * @param weapon
-     */
-    void inventory(IWeapon weapon);
 }

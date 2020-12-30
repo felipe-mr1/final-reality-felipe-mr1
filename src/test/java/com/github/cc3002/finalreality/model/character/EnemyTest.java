@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 class EnemyTest extends AbstractCharacterTest {
 
-  private static final java.lang.String ENEMY_NAME = "Goblin";
+  private static final String ENEMY_NAME = "Goblin";
 
   /**
    * Setup method.

@@ -1,10 +1,7 @@
 package com.github.cc3002.finalreality.model.Controller;
 
 
-import com.github.cc3002.finalreality.model.Controller.Phases.AttackPhase;
-import com.github.cc3002.finalreality.model.Controller.Phases.CreationPhase;
-import com.github.cc3002.finalreality.model.Controller.Phases.InvalidActionException;
-import com.github.cc3002.finalreality.model.Controller.Phases.InventoryPhase;
+import com.github.cc3002.finalreality.model.Controller.Phases.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +9,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
+/**
+ * Test the functionality of the controller
+ */
 public class ControllerTest {
 
     ControllerFF controllerFF;
@@ -87,8 +86,6 @@ public class ControllerTest {
 
     @Test
     public void controllerAttackTest() throws InterruptedException {
-        //controllerFF.getEnemiesHealthPoints(new PrintStream(OutputStream.nullOutputStream()));
-        //controllerFF.getPlayersHealthPoints(new PrintStream(OutputStream.nullOutputStream()));
         controllerFF.equip("Libano", "baston");
         controllerFF.equip("Siberia", "baston blanco");
         controllerFF.equip("Chile", "Espada");
@@ -136,15 +133,15 @@ public class ControllerTest {
         assertEquals(1, controllerFF.enemySize());
         assertEquals(" Libano Siberia Chile Bolivia Peru ", controllerFF.getParty());
         assertEquals("Libano  HP[500.0]   Siberia  HP[500.0]   Chile  HP[600.0]   Bolivia  HP[800.0]   Peru  HP[600.0]   ", controllerFF.getPartyInfo());
-        assertEquals("Libano--- Class: Black Mage--- Defense Points:2--- Equipped Weaponbaston[Staff]\n" +
+        assertEquals("Libano--- Class: Black Mage--- Defense Points:2--- Equipped Weapon: baston[Staff]\n" +
                 "\n" +
-                "Siberia--- Class: White Mage--- Defense Points:1--- Equipped Weaponbaston blanco[Staff]\n" +
+                "Siberia--- Class: White Mage--- Defense Points:1--- Equipped Weapon: baston blanco[Staff]\n" +
                 "\n" +
-                "Chile--- Class: Thief--- Defense Points:2--- Equipped WeaponEspada[Sword]\n" +
+                "Chile--- Class: Thief--- Defense Points:2--- Equipped Weapon: Espada[Sword]\n" +
                 "\n" +
-                "Bolivia--- Class: Knight--- Defense Points:5--- Equipped WeaponHacha[Axe]\n" +
+                "Bolivia--- Class: Knight--- Defense Points:5--- Equipped Weapon: Hacha[Axe]\n" +
                 "\n" +
-                "Peru--- Class: Engineer--- Defense Points:3--- Equipped WeaponBallesta[Bow]\n" +
+                "Peru--- Class: Engineer--- Defense Points:3--- Equipped Weapon: Ballesta[Bow]\n" +
                 "\n", controllerFF.getBattleInfo());
         assertEquals("Enemy0", controllerFF.getTurnOf());
 
@@ -162,6 +159,16 @@ public class ControllerTest {
         controllerFF1.setPhase(new CreationPhase(controllerFF1));
         controllerFF1.getPhase().tryToCreatePlayer("The Knight", "Knight", "Axe", "Wooden Axe");
         assertEquals("Wooden Axe", controllerFF1.getPlayer("The Knight").getEquippedWeapon().getName());
+    }
 
+    @Test
+    public void exceptionTest() {
+        CreationPhase creationPhase = new CreationPhase(controllerFF);
+        assertThrows(InvalidActionException.class, ()-> creationPhase.tryToAttack("Chile", "Goblin0"));
+        assertThrows(InvalidActionException.class, ()-> creationPhase.tryToEquip("Chile", "asd"));
+        AttackPhase attackPhase = new AttackPhase(controllerFF);
+        assertThrows(InvalidActionException.class, ()-> attackPhase.tryToCreatePlayer("a", "b", "c", "d"));
+        GameOverPhase gameOverPhase = new GameOverPhase(controllerFF);
+        assertThrows(InvalidActionException.class, ()->gameOverPhase.tryToAttack("Chile", "Goblin0"));
     }
 }

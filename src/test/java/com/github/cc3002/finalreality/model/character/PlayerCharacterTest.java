@@ -51,10 +51,6 @@ class PlayerCharacterTest extends AbstractCharacterTest  {
     E_Cid = new Engineer("Cid", turns);
     T_Zidane = new Thief("Zidane", turns);
     testCharacters.add(BM_Vivi);
-    //testCharacters.add(K_Adelbert);
-    //testCharacters.add(WM_Eiko);
-    //testCharacters.add(E_Cid);
-    //testCharacters.add(T_Zidane);
     testAxe = new Axe("Axe", 15, 10, "Axe");
     testStaff = new Staff("Staff", 5, 15, "Staff",20);
     testSword = new Sword("Sword", 15, 10, "Sword");
@@ -112,7 +108,6 @@ class PlayerCharacterTest extends AbstractCharacterTest  {
   }
 
   /**
-   * UNFINISHED, have to work on the method equip.
    * Checking the 'if' conditions on the method equip.
    *
    * Checks that the character didnt equip the weapon.

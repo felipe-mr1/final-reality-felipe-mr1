@@ -3,14 +3,13 @@ package com.github.cc3002.finalreality.model.character.player;
 import com.github.cc3002.finalreality.model.character.AbstractCharacter;
 import com.github.cc3002.finalreality.model.character.ICharacter;
 
-import java.util.ArrayList;
+
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import com.github.cc3002.finalreality.model.weapon.*;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * A class that holds all the information of a single character of the game.
@@ -21,7 +20,6 @@ import org.jetbrains.annotations.NotNull;
 public abstract class AbstractPlayerCharacter extends AbstractCharacter implements com.github.cc3002.finalreality.model.character.player.IPlayer {
 
   protected IWeapon equippedWeapon = null;
-  protected ArrayList<IWeapon> weapons = new ArrayList<>();
 
 
   /**
@@ -34,8 +32,8 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
    * @param characterClass
    *     the class of this character
    */
-  public AbstractPlayerCharacter(@NotNull java.lang.String name,
-                                 @NotNull BlockingQueue<ICharacter> turnsQueue,
+  public AbstractPlayerCharacter( String name,
+                                  BlockingQueue<ICharacter> turnsQueue,
                                  final String characterClass, double healthPoints, int defensePoints) {
     super(turnsQueue, name, characterClass, healthPoints, defensePoints);
   }
@@ -56,7 +54,6 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
   public void equip(IWeapon weapon){
     if (getHealthPoints() >0){
       this.equippedWeapon = weapon;
-      this.inventory(weapon);
       super.equip(weapon);
     }
   }
@@ -80,11 +77,6 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
     if (this.getHealthPoints()>0) {
       getEquippedWeapon().attack(character);
     }
-  }
-
-  @Override
-  public void inventory(IWeapon weapon){
-    weapons.add(weapon);
   }
 
   @Override

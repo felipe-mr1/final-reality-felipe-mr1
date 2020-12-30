@@ -26,8 +26,8 @@ public class Enemy extends AbstractCharacter {
    * Creates a new enemy with a name, a weight and the queue with the characters ready to
    * play.
    */
-  public Enemy(@NotNull final java.lang.String name, final int weight,
-               @NotNull final BlockingQueue<ICharacter> turnsQueue) {
+  public Enemy( final java.lang.String name, final int weight,
+                final BlockingQueue<ICharacter> turnsQueue) {
     super(turnsQueue, name, "Enemy", 300, 0);
     this.weight = weight;
   }
