@@ -157,7 +157,8 @@ public class FinalReality extends Application {
     btn_attack.setLayoutX(50);
     btn_attack.setLayoutY(250);
     Button btn_inventory = new Button("Inventory");
-    btn_inventory.setOnAction(e->{controllerFF.setPhase(new InventoryPhase(controllerFF));primaryStage.setScene(inventory_scene);});
+    btn_inventory.setOnAction(e->inventory());
+    //btn_inventory.setOnAction(e->{controllerFF.setPhase(new InventoryPhase(controllerFF));primaryStage.setScene(inventory_scene);});
     btn_inventory.setLayoutX(150);
     btn_inventory.setLayoutY(250);
     Button btn_team_info = new Button("Party info");
@@ -274,6 +275,18 @@ public class FinalReality extends Application {
     primaryStage.setScene(scene);
 
     primaryStage.show();
+  }
+
+  /**
+   * Sets the corresponding phase
+   */
+  private void inventory() {
+    if (controllerFF.getEnemy(currentTurn)!= null){
+      controllerFF.setPhase(new EnemyPhase(controllerFF));
+    } else {
+      controllerFF.setPhase(new InventoryPhase(controllerFF));
+      primary_stage.setScene(inventory_scene);
+    }
   }
 
   /**

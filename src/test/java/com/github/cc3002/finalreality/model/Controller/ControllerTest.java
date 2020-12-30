@@ -159,6 +159,10 @@ public class ControllerTest {
         controllerFF1.setPhase(new CreationPhase(controllerFF1));
         controllerFF1.getPhase().tryToCreatePlayer("The Knight", "Knight", "Axe", "Wooden Axe");
         assertEquals("Wooden Axe", controllerFF1.getPlayer("The Knight").getEquippedWeapon().getName());
+        controllerFF1.setPhase(new EnemyPhase(controllerFF1));
+        controllerFF1.createWeapon("The Sword", 15, 16, "Sword", 0);
+        controllerFF1.tryToEquip("The Knight", "The Sword");
+        assertNotEquals("The Sword", controllerFF1.getPlayer("The Knight").getEquippedWeapon().getName());
     }
 
     @Test
