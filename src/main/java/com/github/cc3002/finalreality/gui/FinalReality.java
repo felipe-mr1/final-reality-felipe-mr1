@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -58,11 +60,20 @@ public class FinalReality extends Application {
     Group root = new Group();
     Label label = new Label("Welcome to Final Reality: Super Mega Alpha Edition");
     Label note = new Label("You will encounter a random set of enemies between 1 and 4");
-    root.getChildren().addAll(label, note);
+
+    Image image = new Image("file:src/img03.jpg");
+    ImageView iv1 = new ImageView();
+    iv1.setImage(image);
+    iv1.setFitWidth(640);
+    iv1.setFitHeight(480);
+
+    root.getChildren().addAll(iv1, label, note);
     label.setLayoutX(200);
     label.setLayoutY(100);
     note.setLayoutX(200);
     note.setLayoutY(220);
+
+
 
     // Button Scene 0
     Button btn1 = new Button("Choose Characters");
@@ -110,7 +121,14 @@ public class FinalReality extends Application {
     reset.setLayoutX(200);
     reset.setLayoutY(180);
 
-    root2.getChildren().addAll(btn2, btn3, btn4, btn5, btn6, btn_set_scn3, reset);
+    ImageView iv2 = new ImageView();
+    iv2.setImage(image);
+    iv2.setFitWidth(640);
+    iv2.setFitHeight(480);
+    iv2.setLayoutX(-80);
+    iv2.setLayoutY(-175);
+
+    root2.getChildren().addAll( iv2, btn2, btn3, btn4, btn5, btn6, btn_set_scn3, reset);
 
 
     // Creation Scene
@@ -162,7 +180,13 @@ public class FinalReality extends Application {
     GameOver.setLayoutY(290);
     attackInfo.setLayoutX(200);
     attackInfo.setLayoutY(330);
-    main_root.getChildren().addAll(Enemies, Players, turnOf, GameOver, btn_attack, btn_inventory, btn_team_info, attackInfo);
+
+    ImageView iv3 = new ImageView();
+    iv3.setImage(image);
+    iv3.setFitWidth(640);
+    iv3.setFitHeight(480);
+
+    main_root.getChildren().addAll(iv3, Enemies, Players, turnOf, GameOver, btn_attack, btn_inventory, btn_team_info, attackInfo);
 
     main_scene = new Scene(main_root, 640, 480);
 
@@ -180,7 +204,12 @@ public class FinalReality extends Application {
     attacker.setLayoutX(200);
     attacker.setLayoutY(100);
 
-    attack_root.getChildren().addAll( EnemiesA, PlayersA, attacker, btn_attack_back);
+    ImageView iv4 = new ImageView();
+    iv4.setImage(image);
+    iv4.setFitWidth(640);
+    iv4.setFitHeight(480);
+
+    attack_root.getChildren().addAll( iv4, EnemiesA, PlayersA, attacker, btn_attack_back);
 
     attack_scene = new Scene(attack_root, 640, 480);
 
@@ -206,7 +235,12 @@ public class FinalReality extends Application {
     Inventory.setLayoutX(30);
     Inventory.setLayoutY(30);
 
-    root5.getChildren().addAll(btn_inv_goBack, Inventory, btn_equip, weapon_to_equip);
+    ImageView iv5 = new ImageView();
+    iv5.setImage(image);
+    iv5.setFitWidth(640);
+    iv5.setFitHeight(480);
+
+    root5.getChildren().addAll(iv5, btn_inv_goBack, Inventory, btn_equip, weapon_to_equip);
 
     inventory_scene = new Scene(root5, 640, 480);
 
@@ -224,7 +258,12 @@ public class FinalReality extends Application {
     PartyInfo.setLayoutX(30);
     PartyInfo.setLayoutY(30);
 
-    root6.getChildren().addAll(go_back, PartyInfo);
+    ImageView iv6 = new ImageView();
+    iv6.setImage(image);
+    iv6.setFitWidth(640);
+    iv6.setFitHeight(480);
+
+    root6.getChildren().addAll(iv6, go_back, PartyInfo);
 
     partyInfo_scene = new Scene(root6, 640, 480);
 
