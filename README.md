@@ -30,6 +30,9 @@ During each turn the user can see their party info, inventory (where one can dec
 and select a target to attack. Once it's the enemy turn the user has to click 'next' to continue the game and the
 computer will attack a random enemy.
 
+It's important to note that once you pick a team and select start the computer will load the game for about six
+seconds, it's NOT bugged.
+
 
 Jerarquia de Clases (Spanish)
 ---
